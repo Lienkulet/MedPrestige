@@ -21,7 +21,7 @@ const Footer = () => {
                   />
                   <path d="M16 8a4 4 0 100 8 4 4 0 000-8z" fill="white" />
                 </svg>
-                HealthPoint
+                MedPrestige
               </h3>
               <p className="footer-tagline">
                 Advanced healthcare services made personal for every patient.
@@ -43,7 +43,7 @@ const Footer = () => {
             <div className="footer-col">
               <h4>Contact Us</h4>
               <ul>
-                <li>info@healthpoint.com</li>
+                <li>info@MedPrestige.com</li>
                 <li>+1 (555) 123-4567</li>
                 <li>123 Medical Drive, Suite 100</li>
               </ul>
@@ -51,7 +51,7 @@ const Footer = () => {
           </div>
 
           <div className="footer-bottom">
-            <p>&copy; {new Date().getFullYear()} HealthPoint. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} MedPrestige. All rights reserved.</p>
           </div>
         </div>
       </footer>

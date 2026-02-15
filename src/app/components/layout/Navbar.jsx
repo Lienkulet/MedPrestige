@@ -40,7 +40,7 @@ const Navbar = () => {
                   fill="white"
               />
             </svg>
-            <span className="navbar-brand">HealthPoint</span>
+            <span className="navbar-brand">MedPrestige</span>
           </Link>
 
           {/* Desktop Navigation */}

@@ -1,0 +1,135 @@
+.info-cards{
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: space-evenly;
+    gap: 70px;
+    padding-top: 97px;
+    padding-bottom: 121px;
+}
+
+.container{
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.map-section iframe {
+    border-radius: 8px;
+    max-height: 477px;
+  }
+
+.separator-line{
+    background-color: #E1F1F6;
+    height: 1px;
+    width: 100%;
+    margin-top: 108px;
+    margin-bottom: 96px;
+}
+
+.consult-section {
+    display: flex;
+    /* grid-template-columns: 1.1fr 1fr; */
+    flex-direction: row;
+    align-items: start;
+    justify-content: space-between;
+    margin-bottom: 136px;
+  }
+  
+  /* Left side */
+  .consult-section__content {
+    margin-top: 43px;
+    max-width: 570px;
+  }
+  
+  /* Right image */
+  .consult-section__image img {
+    width: 100%;
+    max-width: 526px;
+    max-height: 650px;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+/* Tablet */
+@media (max-width: 1024px) {
+  .info-cards{
+    gap: 40px;
+    padding-top: 70px;
+    padding-bottom: 90px;
+    justify-content: space-between;
+  }
+
+  .separator-line{
+    margin-top: 80px;
+    margin-bottom: 70px;
+  }
+
+  .consult-section{
+    gap: 30px;
+    margin-bottom: 90px;
+  }
+
+  .consult-section__content{
+    margin-top: 20px;
+  }
+
+  .consult-section__image img{
+    max-width: 460px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .info-cards{
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 24px;
+    padding-top: 50px;
+    padding-bottom: 60px;
+  }
+
+  .separator-line{
+    margin-top: 56px;
+    margin-bottom: 48px;
+  }
+
+  .consult-section{
+    flex-direction: column;
+    align-items: stretch;
+    margin-bottom: 70px;
+  }
+
+  .consult-section__image{
+    order: -1; /* image above form */
+  }
+
+  .consult-section__content{
+    max-width: 100%;
+    margin-top: 0;
+  }
+
+  .consult-section__image img{
+    max-width: 100%;
+    max-height: 420px;
+  }
+
+  .map-section iframe{
+    max-height: 380px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .container{
+    padding: 26px 10px;
+  }
+
+  .map-section iframe{
+    max-height: 300px;
+  }
+
+  .consult-section__image img{
+    max-height: 320px;
+  }
+}
