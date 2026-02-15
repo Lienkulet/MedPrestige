@@ -26,7 +26,7 @@ export default function AdminSettingsPage() {
           <div className="grid2">
             <div className="field">
               <label>Clinic name</label>
-              <input className="input" defaultValue="HealthPoint Clinic" />
+              <input className="input" defaultValue="MedPrestige Clinic" />
             </div>
             <div className="field">
               <label>Support email</label>
