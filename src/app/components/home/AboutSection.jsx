@@ -20,31 +20,11 @@ const AboutSection = () => {
                             />
                         </div>
                         <div className="about-img-card about-img-video">
-                            <Image
-                                src="https://images.unsplash.com/photo-1551190822-a9ce113ac100?w=500&h=350&fit=crop&crop=center"
-                                alt="Vaccination procedure"
-                                width={260}
-                                height={200}
-                                className="about-img"
-                                unoptimized
-                            />
-                            {/* Play button overlay */}
-                            <button className="about-play-btn" aria-label="Play video">
-                                <svg
-                                    width="28"
-                                    height="28"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="white"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                >
-                                    <polygon points="5 3 19 12 5 21 5 3" fill="white" stroke="white" />
-                                </svg>
-                            </button>
+                            <iframe src="https://www.youtube.com/embed/FfZZ5fBdTWs" allowFullScreen />
+
                         </div>
                     </div>
+
 
                     {/* Bottom row: one large image */}
                     <div className="about-images-bottom">

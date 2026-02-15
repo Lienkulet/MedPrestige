@@ -603,12 +603,22 @@ img {
 
 .about-images-top .about-img-card:last-child {
   flex: 1;
-  max-height: 220px;
 }
 
 /* Play button */
 .about-img-video {
+  position: relative;
   cursor: pointer;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.about-img-video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
 }
 
 .about-play-btn {
@@ -643,20 +653,20 @@ img {
   box-shadow: 0 0 30px rgba(74, 123, 247, 0.4);
 }
 
-/* Video overlay gradient */
-.about-img-video::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-          180deg,
-          rgba(0, 0, 0, 0.05) 0%,
-          rgba(0, 0, 0, 0.2) 100%
-  );
-  z-index: 1;
-  pointer-events: none;
-  border-radius: var(--radius-lg);
-}
+/*!* Video overlay gradient *!*/
+/*.about-img-video::before {*/
+/*  content: "";*/
+/*  position: absolute;*/
+/*  inset: 0;*/
+/*  background: linear-gradient(*/
+/*          180deg,*/
+/*          rgba(0, 0, 0, 0.05) 0%,*/
+/*          rgba(0, 0, 0, 0.2) 100%*/
+/*  );*/
+/*  z-index: 1;*/
+/*  pointer-events: none;*/
+/*  border-radius: var(--radius-lg);*/
+/*}*/
 
 /* Bottom large image */
 .about-img-large {
