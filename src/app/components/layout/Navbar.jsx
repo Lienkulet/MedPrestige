@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import LogoIcon from "../ui/LogoIcon";
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -19,27 +20,7 @@ const Navbar = () => {
         <div className="navbar-container">
           {/* Logo */}
           <Link href="/" className="navbar-logo">
-            <svg
-                width="36"
-                height="36"
-                viewBox="0 0 36 36"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                  d="M18 3C11.5 3 7 8 7 14c0 9 11 19 11 19s11-10 11-19c0-6-3.5-11-11-11z"
-                  fill="#4A7BF7"
-              />
-              <rect x="15.5" y="10" width="5" height="12" rx="2.5" fill="white" />
-              <rect
-                  x="12"
-                  y="13.5"
-                  width="12"
-                  height="5"
-                  rx="2.5"
-                  fill="white"
-              />
-            </svg>
+            <LogoIcon />
             <span className="navbar-brand">MedPrestige</span>
           </Link>
 
