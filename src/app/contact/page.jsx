@@ -1,8 +1,11 @@
 import React from 'react'
+import PagesHero from '../components/PagesHero/PagesHero'
 
 const Contact = () => {
   return (
-    <div>Contact</div>
+    <div>
+      <PagesHero title={'Contact Us'} subtitle={'Letraset sheets containing Lorem Ipsum passages and more recently with desktop publishing'} />
+    </div>
   )
 }
 
