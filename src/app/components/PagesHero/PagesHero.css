@@ -29,3 +29,64 @@
     margin: 0;
   }
   
+  /* Tablet */
+@media (max-width: 1024px) {
+  .pages-hero {
+    padding: 110px 0 55px;
+  }
+
+  .pages-hero h1 {
+    font-size: 44px;
+    line-height: 54px !important;
+    letter-spacing: -2px;
+  }
+
+  .pages-hero p {
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: -0.8px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .pages-hero {
+    padding: 90px 0 45px;
+  }
+
+  .pages-hero-content {
+    max-width: 520px;
+    padding: 0 16px;
+  }
+
+  .pages-hero h1 {
+    font-size: 36px;
+    line-height: 44px !important;
+    letter-spacing: -1.5px;
+    margin-bottom: 14px;
+  }
+
+  .pages-hero p {
+    font-size: 16px;
+    line-height: 26px;
+    letter-spacing: -0.5px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .pages-hero {
+    padding: 75px 0 40px;
+  }
+
+  .pages-hero h1 {
+    font-size: 30px;
+    line-height: 38px !important;
+    letter-spacing: -1px;
+  }
+
+  .pages-hero p {
+    font-size: 15px;
+    line-height: 24px;
+  }
+}
