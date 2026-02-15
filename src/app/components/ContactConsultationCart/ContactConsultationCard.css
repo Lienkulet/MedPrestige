@@ -119,33 +119,38 @@
 
 /* Mobile */
 @media (max-width: 768px) {
-  .consult-card {
-    padding: 26px 20px 28px;
-  }
-
-  .consult-card__title {
-    font-size: 28px;
-    line-height: 34px;
-    margin-bottom: 22px;
-  }
-
   .consult-card__form {
-    grid-template-columns: 1fr;
-    gap: 18px;
+    grid-template-columns: 1fr !important;
   }
 
+  /* force each field to take full row */
+  .field {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  /* force inputs/selects to stretch */
   .field input,
   .field select {
-    width: 100%;
-    max-width: 100%;
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;  /* important: removes any hidden constraint */
+    min-width: 0 !important;
+    box-sizing: border-box !important;
   }
 
-  .consult-card__button {
-    width: 100%;
-    max-width: 100%;
-    justify-self: stretch;
+  /* iOS date/time can be extra stubborn */
+  .field input[type="date"],
+  .field input[type="time"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100% !important;
   }
 }
+
 
 /* Small phones */
 @media (max-width: 480px) {
