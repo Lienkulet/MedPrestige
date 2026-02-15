@@ -107,6 +107,11 @@
     gap: 20px;
   }
 
+  .field input,
+  .field select {
+    max-width: 100%;
+  }
+
   .consult-card__button {
     max-width: 100%;
   }
@@ -127,6 +132,12 @@
   .consult-card__form {
     grid-template-columns: 1fr;
     gap: 18px;
+  }
+
+  .field input,
+  .field select {
+    width: 100%;
+    max-width: 100%;
   }
 
   .consult-card__button {
