@@ -39,61 +39,69 @@ export default function AdminDashboardPage() {
 
         <div className="card">
           <div className="card__title">Doctors with most appointments</div>
-          <table className="table">
-            <thead>
-              <tr><th>Doctor</th><th>Appointments</th></tr>
-            </thead>
-            <tbody>
-              {[
-                ["Dr. Elena Popescu", 42],
-                ["Dr. Andrei Ionescu", 38],
-                ["Dr. Maria Stoica", 31],
-                ["Dr. Vlad Marin", 27],
-                ["Dr. Ioana Radu", 24],
-              ].map(([name, count]) => (
-                <tr key={name}>
-                  <td>{name}</td>
-                  <td>{count}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+
+          <div className="table-scroll" role="region" aria-label="Doctors with most appointments table" tabIndex={0}>
+            <table className="table table--compact">
+              <thead>
+                <tr><th>Doctor</th><th>Appointments</th></tr>
+              </thead>
+              <tbody>
+                {[
+                  ["Dr. Elena Popescu", 42],
+                  ["Dr. Andrei Ionescu", 38],
+                  ["Dr. Maria Stoica", 31],
+                  ["Dr. Vlad Marin", 27],
+                  ["Dr. Ioana Radu", 24],
+                ].map(([name, count]) => (
+                  <tr key={name}>
+                    <td>{name}</td>
+                    <td>{count}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
+
 
         <div className="card card--full">
           <div className="card__title">Recent Appointments</div>
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Date & Time</th>
-                <th>Client</th>
-                <th>Doctor</th>
-                <th>Service</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {[
-                ["Today 10:00", "Alex M.", "Dr. Elena", "Consultation", "Confirmed"],
-                ["Today 11:30", "Mara L.", "Dr. Andrei", "Dermatology", "Confirmed"],
-                ["Today 13:00", "Dan P.", "Dr. Maria", "Dental", "Completed"],
-                ["Today 15:00", "Ioana T.", "Dr. Vlad", "Consultation", "Cancelled"],
-                ["Today 16:30", "George R.", "Dr. Ioana", "Cardiology", "Confirmed"],
-                ["Tomorrow 09:00", "Sonia B.", "Dr. Elena", "Consultation", "Confirmed"],
-                ["Tomorrow 11:00", "Radu C.", "Dr. Andrei", "Dermatology", "Confirmed"],
-                ["Fri 10:30", "Elena N.", "Dr. Maria", "Dental", "Confirmed"],
-                ["Fri 14:00", "Paul S.", "Dr. Vlad", "Consultation", "No-show"],
-                ["Sat 12:00", "Ana V.", "Dr. Ioana", "Cardiology", "Confirmed"],
-              ].map((row, idx) => (
-                <tr key={idx}>
-                  {row.map((cell, j) => (
-                    <td key={j}>{cell}</td>
-                  ))}
+
+          <div className="table-scroll" role="region" aria-label="Recent appointments table" tabIndex={0}>
+            <table className="table table--wide">
+              <thead>
+                <tr>
+                  <th>Date & Time</th>
+                  <th>Client</th>
+                  <th>Doctor</th>
+                  <th>Service</th>
+                  <th>Status</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {[
+                  ["Today 10:00", "Alex M.", "Dr. Elena", "Consultation", "Confirmed"],
+                  ["Today 11:30", "Mara L.", "Dr. Andrei", "Dermatology", "Confirmed"],
+                  ["Today 13:00", "Dan P.", "Dr. Maria", "Dental", "Completed"],
+                  ["Today 15:00", "Ioana T.", "Dr. Vlad", "Consultation", "Cancelled"],
+                  ["Today 16:30", "George R.", "Dr. Ioana", "Cardiology", "Confirmed"],
+                  ["Tomorrow 09:00", "Sonia B.", "Dr. Elena", "Consultation", "Confirmed"],
+                  ["Tomorrow 11:00", "Radu C.", "Dr. Andrei", "Dermatology", "Confirmed"],
+                  ["Fri 10:30", "Elena N.", "Dr. Maria", "Dental", "Confirmed"],
+                  ["Fri 14:00", "Paul S.", "Dr. Vlad", "Consultation", "No-show"],
+                  ["Sat 12:00", "Ana V.", "Dr. Ioana", "Cardiology", "Confirmed"],
+                ].map((row, idx) => (
+                  <tr key={idx}>
+                    {row.map((cell, j) => (
+                      <td key={j}>{cell}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
+
       </section>
     </div>
   );

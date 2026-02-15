@@ -1,84 +1,82 @@
 .admin-shell {
-    display: grid;
-    grid-template-columns: 280px 1fr;
-    min-height: 100vh;
-  }
-  
-  .admin-shell.is-collapsed {
-    grid-template-columns: 86px 1fr;
-  }
-  
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: 100vh;
+}
+
+.admin-shell.is-collapsed {
+  grid-template-columns: 86px 1fr;
+}
+
+.admin-shell__sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  border-right: 1px solid #E1F1F6;
+  background: #ffffff;
+}
+
+.admin-shell__main {
+  display: grid;
+  grid-template-rows: 72px 1fr auto;
+  min-width: 0;
+}
+
+.admin-shell__navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #ffffff;
+  border-bottom: 1px solid #E1F1F6;
+}
+
+.admin-shell__content {
+  padding: 28px;
+  min-width: 0;
+}
+
+.admin-shell__footer {
+  border-top: 1px solid #E1F1F6;
+  background: #ffffff;
+}
+
+/* Mobile: sidebar becomes drawer */
+@media (max-width: 900px) {
   .admin-shell__sidebar {
-    position: sticky;
+    position: fixed;
+    inset: 0;
+    background: rgba(16, 45, 71, 0.15);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s ease;
+    z-index: 998;
+  }
+
+  .admin-shell__sidebar.is-mobile-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .admin-sidebar {
+    position: fixed;
     top: 0;
+    left: 0;
+    width: 280px;
     height: 100vh;
+    background: #fff;
     border-right: 1px solid #E1F1F6;
-    background: #ffffff;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 999;
   }
-  
-  .admin-shell__main {
-    display: grid;
-    grid-template-rows: 72px 1fr auto;
-    min-width: 0;
+
+  .admin-sidebar.is-mobile-open {
+    transform: translateX(0);
   }
-  
-  .admin-shell__navbar {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background: #ffffff;
-    border-bottom: 1px solid #E1F1F6;
+
+  .admin-sidebar__close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
-  
-  .admin-shell__content {
-    padding: 28px;
-    min-width: 0;
-  }
-  
-  .admin-shell__footer {
-    border-top: 1px solid #E1F1F6;
-    background: #ffffff;
-  }
-  
-  /* Mobile: sidebar becomes drawer */
-  @media (max-width: 900px) {
-    .admin-shell__sidebar {
-      position: fixed;
-      inset: 0;
-      background: rgba(16, 45, 71, 0.15);
-      opacity: 0;
-      pointer-events: none;
-      transition: 0.3s ease;
-      z-index: 998;
-    }
-  
-    .admin-shell__sidebar.is-mobile-open {
-      opacity: 1;
-      pointer-events: auto;
-    }
-  
-    .admin-sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 280px;
-      height: 100vh;
-      background: #fff;
-      border-right: 1px solid #E1F1F6;
-      transform: translateX(-100%);
-      transition: transform 0.3s ease;
-      z-index: 999;
-    }
-  
-    .admin-sidebar.is-mobile-open {
-      transform: translateX(0);
-    }
-  
-    .admin-sidebar__close {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-  }
-  
-  
+}
