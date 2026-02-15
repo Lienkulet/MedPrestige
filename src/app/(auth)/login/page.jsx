@@ -1,7 +1,19 @@
+"use client";
+
 import React from "react";
+import { useRouter } from "next/navigation";
 import "./Login.css";
 
 export default function LoginPage() {
+  const router = useRouter();
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    // UI-only: later you’ll validate credentials + set auth/session
+    router.push("/admin");
+  }
+
   return (
     <main className="login-page">
       <section className="login-card" aria-labelledby="login-title">
@@ -12,7 +24,7 @@ export default function LoginPage() {
           </p>
         </header>
 
-        <form className="login-form">
+        <form className="login-form" onSubmit={handleSubmit}>
           <div className="login-field">
             <label htmlFor="email">Email</label>
             <input

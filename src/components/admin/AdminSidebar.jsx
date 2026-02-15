@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import "./admin-sidebar.css";
+import LogoIcon from "../Icons/LogoIcon";
 
 const nav = [
   { href: "/admin", label: "Dashboard", icon: "🏠" },
@@ -19,8 +20,8 @@ export default function AdminSidebar({ collapsed, mobileOpen, onCloseMobile }) {
     <aside className={`admin-sidebar ${mobileOpen ? "is-mobile-open" : ""} ${collapsed ? "is-collapsed" : ""}`}>
       <div className="admin-sidebar__top">
         <div className="admin-sidebar__brand">
-          <div className="admin-sidebar__logo">HP</div>
-          {!collapsed && <div className="admin-sidebar__name">HealthPoint Admin</div>}
+          <LogoIcon />
+          {!collapsed && <div className="admin-sidebar__name">MedPrestige Admin</div>}
         </div>
 
         <button className="admin-sidebar__close" onClick={onCloseMobile} aria-label="Close menu">
