@@ -1,4 +1,5 @@
 import Link from "next/link";
+import LogoIcon from "../ui/LogoIcon";
 
 const Footer = () => {
   return (
@@ -8,19 +9,7 @@ const Footer = () => {
             {/* Brand */}
             <div className="footer-brand">
               <h3 className="footer-logo">
-                <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 32 32"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                      d="M16 2C10 2 6 6.5 6 12c0 8 10 18 10 18s10-10 10-18c0-5.5-4-10-10-10z"
-                      fill="#4A7BF7"
-                  />
-                  <path d="M16 8a4 4 0 100 8 4 4 0 000-8z" fill="white" />
-                </svg>
+                <LogoIcon />
                 MedPrestige
               </h3>
               <p className="footer-tagline">
