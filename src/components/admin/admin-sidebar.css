@@ -1,0 +1,123 @@
+.admin-sidebar {
+    height: 100%;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  
+  .admin-sidebar__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  
+  .admin-sidebar__brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .admin-sidebar__logo {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: #2F73F2;
+    color: #fff;
+    display: grid;
+    place-items: center;
+    font-weight: 800;
+  }
+  
+  .admin-sidebar__name {
+    font-weight: 800;
+    color: #102D47;
+    line-height: 1.1;
+  }
+  
+  .admin-sidebar__close {
+    display: none;
+    height: 40px;
+    width: 44px;
+    border: 1px solid #E1F1F6;
+    background: #ffffff;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  .admin-sidebar__nav {
+    display: grid;
+    gap: 8px;
+    margin-top: 6px;
+  }
+  
+  .admin-sidebar__link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 12px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #102D47;
+    border: 1px solid transparent;
+  }
+  
+  .admin-sidebar__link:hover {
+    background: #EFFBFF;
+    border-color: #E1F1F6;
+  }
+  
+  .admin-sidebar__link.is-active {
+    background: #EFFBFF;
+    border-color: #C0D5FB;
+    color: #2F73F2;
+    font-weight: 700;
+  }
+  
+  .admin-sidebar__icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    background: #F6FBFF;
+    border: 1px solid #E1F1F6;
+  }
+  
+  .admin-sidebar.is-collapsed .admin-sidebar__link {
+    justify-content: center;
+  }
+  
+  .admin-sidebar__hint {
+    margin-top: auto;
+    padding: 14px;
+    border: 1px solid #E1F1F6;
+    border-radius: 14px;
+    background: #F6FBFF;
+  }
+  
+  .admin-sidebar__hintTitle {
+    font-weight: 800;
+    margin-bottom: 6px;
+    color: #102D47;
+  }
+  
+  .admin-sidebar__hintText {
+    color: #547593;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  /* Mobile drawer */
+  @media (max-width: 900px) {
+    .admin-sidebar__close { display: inline-flex; align-items: center; justify-content: center; }
+    .admin-shell__sidebar { background: rgba(16, 45, 71, 0.15); }
+    .admin-sidebar {
+      width: 280px;
+      height: 100vh;
+      background: #fff;
+      border-right: 1px solid #E1F1F6;
+    }
+  }
+  
