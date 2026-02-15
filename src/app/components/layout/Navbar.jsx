@@ -10,11 +10,9 @@ const Navbar = () => {
   const navLinks = [
     { name: "Services", href: "/services" },
     { name: "Doctors", href: "/doctors" },
-    { name: "Blog", href: "/blog" },
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
   ];
-
   return (
       <nav className="navbar">
         <div className="navbar-container">
