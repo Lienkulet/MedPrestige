@@ -1,0 +1,15 @@
+@import "../doctors/doctors.css";
+
+.settings {
+  display: grid;
+  gap: 14px;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #E1F1F6;
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.card__title { font-weight: 800; margin-bottom: 12px; }

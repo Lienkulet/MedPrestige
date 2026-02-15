@@ -1,0 +1,38 @@
+@import "../doctors/doctors.css";
+
+.filters {
+  display: grid;
+  grid-template-columns: 1.2fr 1.2fr 1fr 1fr 1fr;
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #E1F1F6;
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.card__title {
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.calendar-placeholder {
+  height: 420px;
+  border: 1px dashed #C0D5FB;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  color: #547593;
+  background: #F6FBFF;
+  text-align: center;
+  padding: 12px;
+}
+
+.row { display: flex; gap: 10px; align-items: center; }
+
+@media (max-width: 1100px) {
+  .filters { grid-template-columns: 1fr 1fr; }
+}

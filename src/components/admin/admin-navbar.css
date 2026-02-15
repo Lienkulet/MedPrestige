@@ -1,0 +1,77 @@
+.admin-navbar {
+    height: 72px;
+    padding: 0 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .admin-navbar__burger {
+    display: none;
+    height: 40px;
+    width: 44px;
+    border: 1px solid #E1F1F6;
+    background: #ffffff;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  
+  .admin-navbar__collapse {
+    height: 40px;
+    width: 44px;
+    border: 1px solid #E1F1F6;
+    background: #ffffff;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  .admin-navbar__title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    color: #102D47;
+  }
+  
+  .admin-navbar__badge {
+    background: #EFFBFF;
+    border: 1px solid #C0D5FB;
+    color: #2F73F2;
+    font-weight: 700;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+  }
+  
+  .admin-navbar__actions {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .admin-navbar__link {
+    text-decoration: none;
+    color: #2F73F2;
+    font-weight: 600;
+  }
+  
+  .admin-navbar__btn {
+    height: 40px;
+    padding: 0 14px;
+    border: 1px solid #C0D5FB;
+    background: #2F73F2;
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  
+  .admin-navbar__btn:hover { filter: brightness(0.95); }
+  
+  @media (max-width: 900px) {
+    .admin-navbar__burger { display: inline-flex; align-items: center; justify-content: center; }
+    .admin-navbar__collapse { display: none; }
+  }
+  

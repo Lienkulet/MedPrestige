@@ -1,0 +1,11 @@
+.admin-footer {
+    padding: 16px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #547593;
+    font-size: 14px;
+  }
+  
+  .admin-footer__muted { opacity: 0.8; }
+  
