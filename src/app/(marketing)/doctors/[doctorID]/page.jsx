@@ -1,5 +1,6 @@
 import React from "react";
 import PagesHero from "@/components/PagesHero/PagesHero";
+import ContactCardFooter from "@/components/ContactCardFooter/ContactCardFooter";
 
 const DoctorProfile = ({
                          name,
@@ -132,6 +133,7 @@ const DoctorProfile = ({
           </div>
         </div>
       </section>
+      <ContactCardFooter />
       </main>
   );
 };
