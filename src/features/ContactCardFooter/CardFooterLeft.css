@@ -1,0 +1,85 @@
+.left-block{
+    margin-top: 48px;
+}
+
+.left-block h1{
+    font-size: 35px;
+    font-weight: 700;
+    letter-spacing: -3%;
+    color: #fff;
+    margin-bottom: 40px;
+}
+
+.line{
+    height: 1px;
+    background-color: #4A88FC;
+    width: 100%;
+    margin: 32px 0;
+}
+
+.locationBtn span{
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: -2%;
+    color: #fff;
+}
+
+.locationBtn{
+    background-color: #46C4FF;
+    display: flex;
+    flex-direction: row;
+    gap: 27px;
+    width: 100%;
+    max-width: 270px;
+    padding-right: 39px;
+    padding-top: 13px;
+    margin-top: 59px;
+}
+
+/* Tablet & down */
+  @media (max-width: 768px) {
+    .left-block{
+      margin-top: 28px;
+    }
+  
+    .left-block h1{
+      font-size: 28px;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      letter-spacing: normal;
+    }
+  
+    .line{
+      margin: 20px 0;
+    }
+  
+    .locationBtn{
+      max-width: 100%;
+      justify-content: center;
+      gap: 14px;
+      padding: 12px 16px;
+      margin-top: 28px;
+    }
+  
+    .locationBtn span{
+      font-size: 16px;
+    }
+  }
+  
+  /* Small phones */
+  @media (max-width: 480px) {
+    .left-block h1{
+      font-size: 24px;
+      margin-bottom: 18px;
+    }
+  
+    .locationBtn{
+      gap: 12px;
+      padding: 12px 14px;
+    }
+  
+    .locationBtn span{
+      font-size: 15px;
+    }
+  }
+  

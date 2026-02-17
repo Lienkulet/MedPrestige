@@ -1,0 +1,57 @@
+.hoursCard {
+    background: #2f73f2;
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+  }
+  
+  .hoursCardInner {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+  
+  .hoursIcon {
+    margin-top: 9px;
+  }
+  
+  .hoursList {
+    margin: 0;
+  }
+  
+  .hoursRow {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+  }
+  
+  .hoursDays,
+  .hoursTime,
+  .hoursSep {
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: -1%;
+    line-height: 32px;
+    margin: 0;
+  }
+  
+  .hoursTime,
+  .hoursSep {
+    font-weight: 500;
+    color: #CFE0FF;
+  }
+  
+  /* accessibility helper */
+  .srOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  
