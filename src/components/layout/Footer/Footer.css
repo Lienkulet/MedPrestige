@@ -2,7 +2,6 @@
     background: var(--text-dark);
     color: white;
     padding: 64px 0 32px;
-    margin-top: 80px;
   }
   
   .footer-container {
@@ -69,9 +68,7 @@
   }
   
   /* Responsive */
-  @media (max-width: 768px) {
-    .footer { margin-top: 40px; }
-  
+  @media (max-width: 768px) {  
     .footer-grid {
       grid-template-columns: 1fr;
       gap: 32px;

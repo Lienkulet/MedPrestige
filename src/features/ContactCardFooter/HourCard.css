@@ -1,57 +1,104 @@
 .hoursCard {
-    background: #2f73f2;
-    color: #fff;
-    display: flex;
-    flex-direction: row;
-    gap: 25px;
-  }
-  
-  .hoursCardInner {
-    display: flex;
-    align-items: center;
-    gap: 28px;
-  }
-  
-  .hoursIcon {
-    margin-top: 9px;
-  }
-  
-  .hoursList {
-    margin: 0;
-  }
-  
-  .hoursRow {
-    display: flex;
-    align-items: baseline;
-    gap: 5px;
-  }
-  
+  background: #2f73f2;
+  color: #fff;
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+}
+
+.hoursCardInner {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.hoursIcon {
+  margin-top: 9px;
+}
+
+.hoursList {
+  margin: 0;
+}
+
+.hoursRow {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+}
+
+.hoursDays,
+.hoursTime,
+.hoursSep {
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -1%;
+  line-height: 32px;
+  margin: 0;
+}
+
+.hoursTime,
+.hoursSep {
+  font-weight: 500;
+  color: #CFE0FF;
+}
+
+/* accessibility helper */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* tablet */
+@media (max-width: 1024px) {
+
   .hoursDays,
   .hoursTime,
   .hoursSep {
-    font-weight: 700;
-    font-size: 20px;
-    letter-spacing: -1%;
-    line-height: 32px;
-    margin: 0;
+    font-size: 18px;
+    line-height: 28px;
   }
-  
+
+  .hoursCard {
+    gap: 18px;
+  }
+}
+
+/* mobile */
+@media (max-width: 768px) {
+  .hoursCard {
+    gap: 12px;
+  }
+
+  .hoursIcon {
+    margin-top: 0;
+  }
+
+  .hoursDays,
   .hoursTime,
   .hoursSep {
-    font-weight: 500;
-    color: #CFE0FF;
+    font-size: 16px;
+    line-height: 24px;
   }
-  
-  /* accessibility helper */
-  .srOnly {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
+
+  .hoursRow {
+    flex-wrap: wrap;
   }
-  
+}
+
+/* small phones */
+@media (max-width: 480px) {
+
+  .hoursDays,
+  .hoursTime,
+  .hoursSep {
+    font-size: 15px;
+    line-height: 22px;
+  }
+}
