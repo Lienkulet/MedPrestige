@@ -1,0 +1,13 @@
+.two-color {
+    padding: 121px 0;
+    background: linear-gradient(
+      to right,
+      #2F73F2 50%,
+      #46C4FF 50%
+    );
+  }
+  
+  .container{
+    max-width: 1280px;
+    margin: 0 auto;
+}

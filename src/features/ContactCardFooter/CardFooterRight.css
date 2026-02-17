@@ -1,0 +1,91 @@
+.contact-card{
+    padding: 70px;
+    max-width: 670px;
+    border-radius: 12px;
+    background-color: #ffff;
+}
+
+.contact-form{
+    background-color: #ffff;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-grid{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.form-row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 19px;
+    width: 100%;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 15px;
+    width: 100%;
+}
+
+.form-group label{
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: -2%;
+    color: #547593;
+}
+
+.form-group input,
+.form-group textarea{
+    background-color: #ffff;
+    border-radius: 8px;
+    border: 1px solid #CDE0E7;
+    padding: 15px 22px;
+    outline: none;
+    width: 100%;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group input::placeholder,
+.form-group textarea::placeholder{
+    color: #547593;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: -2%;
+}
+
+.form-group input{
+    max-width: 255px;
+}
+
+.form-group textarea{
+    max-width: 530px;
+}
+
+.form-footer button{
+    margin-top: 15px;
+    border: 1px solid #2F73F2;
+    background-color: transparent;
+    color: #2F73F2;
+    transition: background-color 300ms ease, color 500ms ease;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 160px;
+    padding: 13px 50px;
+}
+
+.form-footer button:hover{
+    background-color: #2F73F2;
+    color: #fff;
+}
+
+fieldset{
+    border: none;
+}
