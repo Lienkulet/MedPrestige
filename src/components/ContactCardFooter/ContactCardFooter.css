@@ -1,13 +1,58 @@
 .two-color {
-    padding: 121px 0;
+  padding: 121px 0;
+  background: linear-gradient(to right,
+      #2F73F2 50%,
+      #46C4FF 50%);
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: space-between;
+  gap: 90px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* tablet */
+@media (max-width: 1024px) {
+  .two-color {
+    padding: 80px 0;
     background: linear-gradient(
-      to right,
+      to bottom,
       #2F73F2 50%,
       #46C4FF 50%
     );
   }
-  
-  .container{
-    max-width: 1280px;
-    margin: 0 auto;
+
+  .container {
+    gap: 48px;
+    padding: 0 16px;
+  }
+}
+
+/* mobile */
+@media (max-width: 768px) {
+  .two-color {
+    padding: 60px 16px;
+  }
+
+  .container {
+    flex-direction: column;
+    gap: 36px;
+  }
+}
+
+/* small phones */
+@media (max-width: 480px) {
+  .two-color {
+    padding: 40px 0;
+  }
+
+  .container {
+    padding: 0 16px;
+    gap: 28px;
+  }
 }

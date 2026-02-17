@@ -1,6 +1,7 @@
 import React from "react";
 import PagesHero from "@/components/PagesHero/PagesHero";
 import DoctorCard from "@/components/DoctorCard";
+import ContactCardFooter from "@/components/ContactCardFooter/ContactCardFooter";
 
 const doctors = [
     {
@@ -94,6 +95,7 @@ const MeetOurDoctors = () => {
                     ))}
                 </div>
             </section>
+            <ContactCardFooter />
         </main>
     );
 };

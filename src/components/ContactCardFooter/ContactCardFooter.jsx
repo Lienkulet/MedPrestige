@@ -1,7 +1,6 @@
-import CardFooter from '@/features/ContactCardFooter/CardFooterRight'
-import './ContactCardFooter.css'
-import CardFooterRight from '@/features/ContactCardFooter/CardFooterRight'
 import CardFooterLeft from '@/features/ContactCardFooter/CardFooterLeft'
+import CardFooterRight from '@/features/ContactCardFooter/CardFooterRight'
+import './ContactCardFooter.css'
 
 const ContactCardFooter = () => {
   return (
