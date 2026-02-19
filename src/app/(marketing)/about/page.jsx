@@ -2,6 +2,10 @@ import React from 'react'
 import PagesHero from '../../../components/PagesHero/PagesHero'
 import ContactCardFooter from '@/components/ContactCardFooter/ContactCardFooter'
 import DoctorsCard from '@/components/DoctorsCard/DoctorsCard'
+import EquipmentIcon from '@/components/Icons/EquipmentIcon'
+import SpecialistIcon from '@/components/Icons/SpecialistIcon'
+import SchedulingIcon from '@/components/Icons/SchedulingIcon'
+import PrivacyIcon from '@/components/Icons/PrivacyIcon'
 import './about.css'
 
 const stats = [
@@ -13,22 +17,22 @@ const stats = [
 
 const reasons = [
     {
-        icon: '🏥',
+        icon: <EquipmentIcon />,
         title: 'Modern equipment',
         description: 'Our clinic is equipped with state-of-the-art medical technology for precise diagnosis and treatment.',
     },
     {
-        icon: '👨‍⚕️',
+        icon: <SpecialistIcon />,
         title: 'Certified specialists',
         description: 'All our doctors are board-certified with extensive experience in their fields.',
     },
     {
-        icon: '📅',
+        icon: <SchedulingIcon />,
         title: 'Flexible scheduling',
         description: 'We offer same-day appointments and extended hours to fit your lifestyle.',
     },
     {
-        icon: '🔒',
+        icon: <PrivacyIcon />,
         title: 'Guaranteed privacy',
         description: 'Your personal and medical data is protected with the strictest security measures.',
     },
@@ -135,7 +139,7 @@ const About = () => {
                     <div className="about-reasons-grid">
                         {reasons.map((reason) => (
                             <div className="about-reason-card" key={reason.title}>
-                                <span className="about-reason-icon">{reason.icon}</span>
+                                <div className="about-reason-icon">{reason.icon}</div>
                                 <h3 className="about-reason-title">{reason.title}</h3>
                                 <p className="about-reason-text">{reason.description}</p>
                             </div>
