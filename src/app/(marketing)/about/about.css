@@ -1,0 +1,275 @@
+/* ── Shared ── */
+.about-label {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #2F73F2;
+    margin-bottom: 12px;
+}
+
+.about-heading {
+    font-size: 40px;
+    font-weight: 700;
+    color: #102D47;
+    line-height: 1.2;
+    letter-spacing: -1.5px;
+    margin-bottom: 20px;
+}
+
+.about-subheading {
+    font-size: 20px;
+    font-weight: 700;
+    color: #102D47;
+    letter-spacing: -0.5px;
+    margin-bottom: 10px;
+    margin-top: 28px;
+}
+
+.about-text {
+    font-size: 17px;
+    font-weight: 400;
+    color: #547593;
+    line-height: 1.8;
+    margin-bottom: 16px;
+}
+
+.about-text--centered {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.about-section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+/* ── Who we are ── */
+.about-who {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+}
+
+.about-who-image {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.about-who-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.about-who-content {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── Our impact ── */
+.about-impact {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+}
+
+.about-impact-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.about-impact-image {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.about-impact-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* ── Statistici ── */
+.about-stats {
+    background: #102D47;
+    padding: 80px 0;
+}
+
+.about-stats-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    text-align: center;
+}
+
+.about-stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 24px;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.about-stat-item:last-child {
+    border-right: none;
+}
+
+.about-stat-value {
+    font-size: 52px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -2px;
+    line-height: 1;
+}
+
+.about-stat-label {
+    font-size: 16px;
+    color: #94B8D0;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+/* ── Echipa ── */
+.about-team {
+    padding: 100px 24px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ── De ce să ne alegi ── */
+.about-reasons {
+    padding: 100px 0;
+    background: #eef3fb;
+}
+
+.about-reasons-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.about-reasons-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 60px;
+}
+
+.about-reason-card {
+    background: #ffffff;
+    border: 1px solid #E0EEF8;
+    border-radius: 16px;
+    padding: 36px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.about-reason-card:hover {
+    box-shadow: 0 12px 40px rgba(47, 115, 242, 0.12);
+    transform: translateY(-4px);
+}
+
+.about-reason-icon {
+    font-size: 36px;
+}
+
+.about-reason-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #102D47;
+    letter-spacing: -0.5px;
+}
+
+.about-reason-text {
+    font-size: 15px;
+    color: #547593;
+    line-height: 1.7;
+}
+
+/* ── Tablet ── */
+@media (max-width: 1024px) {
+    .about-heading {
+        font-size: 34px;
+    }
+
+    .about-who,
+    .about-impact {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 60px 24px;
+    }
+
+    .about-reasons-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about-stat-item {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .about-stat-item:nth-last-child(-n+2) {
+        border-bottom: none;
+    }
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+    .about-heading {
+        font-size: 28px;
+        letter-spacing: -1px;
+    }
+
+    .about-text {
+        font-size: 16px;
+    }
+
+    .about-who,
+    .about-impact {
+        padding: 40px 24px;
+    }
+
+    .about-reasons {
+        padding: 70px 0;
+    }
+
+    .about-reasons-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .about-stat-value {
+        font-size: 40px;
+    }
+
+    .about-team {
+        padding: 70px 24px 0;
+    }
+}
