@@ -144,7 +144,7 @@ const DoctorProfilePage = () => {
           name="Dr. Jessica Joan"
           image="/doctor1.jpg"
           biography="Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like). It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from re"
-          occupation="Nephrology"
+          occupation="Cardiologist"
           experience="20 years"
           certificates={["Robert L. Nobel Price", "Edison Awards"]}
           skills={["Working with both children and adults"]}
