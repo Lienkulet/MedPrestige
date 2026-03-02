@@ -52,7 +52,7 @@ const DoctorCard = ({ id, name, specialty, image, hasSocial = false, index = 0 }
         <article
             className="doctor-card"
             style={{
-                backgroundColor: "#fff",
+                backgroundColor: "var(--bg-white)",
                 borderRadius: "10px",
                 overflow: "hidden",
                 boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
@@ -89,8 +89,8 @@ const DoctorCard = ({ id, name, specialty, image, hasSocial = false, index = 0 }
                         style={{ width: "100%", height: "auto", display: "block" }}
                     />
                     <figcaption style={{ padding: "20px 20px 0 20px" }}>
-                        <h3 style={{ fontWeight: "bold", margin: "10px 0 5px", color: "#001f3f" }}>{name}</h3>
-                        <p style={{ color: "#007bff", margin: 0 }}>{specialty}</p>
+                        <h3 style={{ fontWeight: "bold", margin: "10px 0 5px", color: "var(--text-dark)" }}>{name}</h3>
+                        <p style={{ color: "var(--primary)", margin: 0 }}>{specialty}</p>
                     </figcaption>
                 </figure>
             </Link>

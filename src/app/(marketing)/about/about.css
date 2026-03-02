@@ -5,14 +5,14 @@
     font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: #2F73F2;
+    color: var(--primary);
     margin-bottom: 12px;
 }
 
 .about-heading {
     font-size: 40px;
     font-weight: 700;
-    color: #102D47;
+    color: var(--text-dark);
     line-height: 1.2;
     letter-spacing: -1.5px;
     margin-bottom: 20px;
@@ -21,7 +21,7 @@
 .about-subheading {
     font-size: 20px;
     font-weight: 700;
-    color: #102D47;
+    color: var(--text-dark);
     letter-spacing: -0.5px;
     margin-bottom: 10px;
     margin-top: 28px;
@@ -30,7 +30,7 @@
 .about-text {
     font-size: 17px;
     font-weight: 400;
-    color: #547593;
+    color: var(--text-body);
     line-height: 1.8;
     margin-bottom: 16px;
 }
@@ -106,7 +106,7 @@
 
 /* ── Statistici ── */
 .about-stats {
-    background: #102D47;
+    background: var(--footer-bg);
     padding: 80px 0;
 }
 
@@ -135,14 +135,14 @@
 .about-stat-value {
     font-size: 52px;
     font-weight: 700;
-    color: #ffffff;
+    color: var(--footer-text);
     letter-spacing: -2px;
     line-height: 1;
 }
 
 .about-stat-label {
     font-size: 16px;
-    color: #94B8D0;
+    color: var(--footer-muted);
     font-weight: 400;
     letter-spacing: 0.5px;
 }
@@ -157,7 +157,7 @@
 /* ── De ce să ne alegi ── */
 .about-reasons {
     padding: 100px 0;
-    background: #eef3fb;
+    background: var(--bg-light);
 }
 
 .about-reasons-inner {
@@ -174,8 +174,8 @@
 }
 
 .about-reason-card {
-    background: #ffffff;
-    border: 1px solid #E0EEF8;
+    background: var(--bg-white);
+    border: 1px solid var(--line-soft);
     border-radius: 16px;
     padding: 36px 28px;
     display: flex;
@@ -196,13 +196,13 @@
 .about-reason-title {
     font-size: 18px;
     font-weight: 700;
-    color: #102D47;
+    color: var(--text-dark);
     letter-spacing: -0.5px;
 }
 
 .about-reason-text {
     font-size: 15px;
-    color: #547593;
+    color: var(--text-body);
     line-height: 1.7;
 }
 

@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useState, useEffect, useMemo, useContext } from 'react'
+import { createContext, useState, useEffect, useMemo, useContext, useSyncExternalStore } from 'react'
 
 const ThemeConext = createContext(null);
 
@@ -10,12 +10,16 @@ export function useTheme() {
 }
 
 export default function ThemeContext({ children }) {
-    const [theme, setTheme] = useState('light');
-
-    useEffect(() => {
+    const [theme, setTheme] = useState(() => {
+        if (typeof window === "undefined") return "light";
         const saved = localStorage.getItem("theme");
-        if (saved === "light" || saved === "dark") setTheme(saved);
-    }, []);
+        return saved === "dark" ? "dark" : "light";
+    });
+    const mounted = useSyncExternalStore(
+        () => () => {},
+        () => true,
+        () => false
+    );
 
     useEffect(() => {
         document.documentElement.setAttribute("data-theme", theme);
@@ -25,12 +29,12 @@ export default function ThemeContext({ children }) {
     const value = useMemo(
         () => ({
             theme,
+            mounted,
             setTheme,
             toggleTheme: () => setTheme((t) => (t === "light" ? "dark" : "light")),
         }),
-        [theme]
+        [theme, mounted]
     );
 
     return <ThemeConext.Provider value = { value } > { children }</ThemeConext.Provider>;
 }
-

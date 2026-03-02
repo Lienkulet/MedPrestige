@@ -1,6 +1,6 @@
 .footer {
-    background: var(--text-dark);
-    color: white;
+    background: var(--footer-bg);
+    color: var(--footer-text);
     padding: 64px 0 32px;
   }
   
@@ -27,7 +27,7 @@
   }
   
   .footer-tagline {
-    color: rgba(255, 255, 255, 0.55);
+    color: var(--footer-muted);
     font-size: 0.9rem;
     max-width: 300px;
     line-height: 1.7;
@@ -37,7 +37,7 @@
     font-size: 1rem;
     font-weight: 600;
     margin-bottom: 18px;
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--footer-text);
   }
   
   .footer-col ul {
@@ -49,21 +49,21 @@
   
   .footer-col ul li,
   .footer-col ul li a {
-    color: rgba(255, 255, 255, 0.55);
+    color: var(--footer-muted);
     font-size: 0.9rem;
     transition: color 0.3s ease;
   }
   
-  .footer-col ul li a:hover { color: white; }
+  .footer-col ul li a:hover { color: var(--footer-text); }
   
   .footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid var(--footer-border);
     padding-top: 24px;
     text-align: center;
   }
   
   .footer-bottom p {
-    color: rgba(255, 255, 255, 0.35);
+    color: var(--footer-muted);
     font-size: 0.85rem;
   }
   

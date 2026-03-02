@@ -15,14 +15,14 @@
     font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: #2F73F2;
+    color: var(--primary);
     margin-bottom: 12px;
 }
 
 .about-heading {
     font-size: 40px;
     font-weight: 700;
-    color: #102D47;
+    color: var(--text-dark);
     line-height: 1.2;
     letter-spacing: -1.5px;
     margin-bottom: 20px;
@@ -31,7 +31,7 @@
 .about-text {
     font-size: 17px;
     font-weight: 400;
-    color: #547593;
+    color: var(--text-body);
     line-height: 1.8;
     margin-bottom: 16px;
 }
