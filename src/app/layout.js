@@ -1,5 +1,6 @@
 import { Analytics } from '@vercel/analytics/next';
 import "./globals.css";
+import ThemeConext from '@/components/providers/ThemeContext';
 
 export const metadata = {
   title: "MedPrestige - Advanced Healthcare Made Personal",
@@ -19,7 +20,9 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
-        {children}
+        <ThemeConext>
+          {children}
+        </ThemeConext>
         <Analytics />
       </body>
     </html>

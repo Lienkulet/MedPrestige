@@ -47,3 +47,11 @@ img {
   display: block;
   max-width: 100%;
 }
+
+:root[data-theme="dark"] {
+  --text-dark: #f5f7ff;
+  --text-body: #c7cee3;
+  --bg-white: #0f1525;
+  --bg-light: #151c31;
+  --primary-light: #1c2645;
+}

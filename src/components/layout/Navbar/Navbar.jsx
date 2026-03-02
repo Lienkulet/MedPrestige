@@ -4,9 +4,11 @@ import Link from "next/link";
 import { useState } from "react";
 import LogoIcon from "../../Icons/LogoIcon";
 import "./Navbar.css";
+import { useTheme } from "@/components/providers/ThemeContext";
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const {theme, toggleTheme} = useTheme();
 
   const navLinks = [
     { name: "Services", href: "/services" },
@@ -46,6 +48,9 @@ const Navbar = () => {
           <Link href="/contact" className="navbar-cta">
             Buy Now
           </Link>
+          <button onClick={toggleTheme}>
+            {theme === "light" ? "Dark" : "Light"}
+          </button>
         </div>
 
         {/* Mobile Menu Toggle */}
