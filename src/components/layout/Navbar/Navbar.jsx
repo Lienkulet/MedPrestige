@@ -8,7 +8,8 @@ import { useTheme } from "@/components/providers/ThemeContext";
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const {theme, toggleTheme} = useTheme();
+  const { theme, mounted, toggleTheme } = useTheme();
+  const isDark = mounted ? theme === "dark" : false;
 
   const navLinks = [
     { name: "Services", href: "/services" },
@@ -48,8 +49,14 @@ const Navbar = () => {
           <Link href="/contact" className="navbar-cta">
             Buy Now
           </Link>
-          <button onClick={toggleTheme}>
-            {theme === "light" ? "Dark" : "Light"}
+          <button
+            type="button"
+            className="navbar-theme-btn"
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+            title={isDark ? "Switch to light mode" : "Switch to dark mode"}
+          >
+            {isDark ? "Light" : "Dark"}
           </button>
         </div>
 
@@ -101,6 +108,18 @@ const Navbar = () => {
             >
               Buy Now
             </Link>
+            <button
+              type="button"
+              className="navbar-theme-btn mobile"
+              onClick={() => {
+                toggleTheme();
+                setMobileMenuOpen(false);
+              }}
+              aria-label="Toggle theme"
+              title={isDark ? "Switch to light mode" : "Switch to dark mode"}
+            >
+              {isDark ? "Light" : "Dark"}
+            </button>
           </div>
         </div>
       )}

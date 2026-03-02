@@ -1,8 +1,8 @@
 .two-color {
   padding: 121px 0;
   background: linear-gradient(to right,
-      #2F73F2 50%,
-      #46C4FF 50%);
+      var(--primary) 50%,
+      var(--accent-secondary) 50%);
 }
 
 .container {
@@ -22,8 +22,8 @@
     padding: 80px 0;
     background: linear-gradient(
       to bottom,
-      #2F73F2 50%,
-      #46C4FF 50%
+      var(--primary) 50%,
+      var(--accent-secondary) 50%
     );
   }
 

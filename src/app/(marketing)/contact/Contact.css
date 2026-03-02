@@ -19,7 +19,7 @@
   }
 
 .separator-line{
-    background-color: #E1F1F6;
+    background-color: var(--line-soft);
     height: 1px;
     width: 100%;
     margin-top: 108px;
