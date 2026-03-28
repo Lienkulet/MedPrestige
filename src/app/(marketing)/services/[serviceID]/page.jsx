@@ -7,6 +7,8 @@ import CheckIcon from '@/components/Icons/CheckIcon'
 import '../services.css'
 
 
+export const dynamic = 'force-dynamic'
+
 const ServiceDetail = async ({ params }) => {
   const { serviceID } = await params
 

@@ -9,6 +9,8 @@ import LinkedInIcon from "@/components/Icons/LinkedInIcon";
 import FacebookIcon from "@/components/Icons/FacebookIcon";
 import TwitterXIcon from "@/components/Icons/TwitterXIcon";
 
+export const dynamic = 'force-dynamic'
+
 const DoctorProfilePage = async ({ params }) => {
     const { doctorID } = await params;
 

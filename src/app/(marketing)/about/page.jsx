@@ -41,6 +41,8 @@ const reasons = [
     },
 ]
 
+export const dynamic = 'force-dynamic'
+
 const About = async () => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/doctors`)
     const doctors = res.ok ? await res.json() : []

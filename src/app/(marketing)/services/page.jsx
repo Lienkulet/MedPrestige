@@ -95,9 +95,11 @@ import './services.css'
 //   },
 // ]
 
+export const dynamic = 'force-dynamic'
+
 const Services = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/services`)
-  const services = await res.json()
+  const services = res.ok ? await res.json() : []
   return (
     <main>
       <ServicesListAnimations />
