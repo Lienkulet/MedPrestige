@@ -1,4 +1,6 @@
-import React from 'react'
+'use client'
+import { useState, useEffect } from 'react'
+import toast from 'react-hot-toast'
 import Link from 'next/link'
 import PagesHero from '../../../components/PagesHero/PagesHero'
 import ContactCardFooter from '@/components/ContactCardFooter/ContactCardFooter'
@@ -95,11 +97,20 @@ import './services.css'
 //   },
 // ]
 
-export const dynamic = 'force-dynamic'
+export default function Services() {
+  const [services, setServices] = useState([])
 
-const Services = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/services`)
-  const services = res.ok ? await res.json() : []
+  useEffect(() => {
+    const id = toast.loading('Loading...', { id: 'page-load' })
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/services`)
+      .then(res => res.ok ? res.json() : [])
+      .then(data => {
+        setServices(data)
+        toast.dismiss(id)
+      })
+      .catch(() => toast.dismiss(id))
+  }, [])
+
   return (
     <main>
       <ServicesListAnimations />
@@ -139,5 +150,3 @@ const Services = async () => {
     </main>
   )
 }
-
-export default Services

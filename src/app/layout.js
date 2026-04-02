@@ -2,7 +2,8 @@ import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import "./globals.css";
 import 'react-datepicker/dist/react-datepicker.css';
-import ThemeConext from '@/components/providers/ThemeContext';
+import ThemeConext from '@/components/providers/ThemeContext'
+import ToasterProvider from '@/components/providers/ToasterProvider';
 
 export const metadata = {
   title: "MedPrestige - Advanced Healthcare Made Personal",
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
       <body>
         <ThemeConext>
           {children}
+          <ToasterProvider />
         </ThemeConext>
         <Analytics />
         <SpeedInsights />

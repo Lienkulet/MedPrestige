@@ -4,14 +4,9 @@ import AboutSection from "./AboutSection";
 import ServicesSection from "./sections/ServicesSection";
 import SupportGroupsSection from "./sections/SupportGroupsSection";
 import ContactCardFooter from "@/components/ContactCardFooter/ContactCardFooter";
-import DoctorsSection from "@/components/DoctorsSection/DoctorsSection";
+import DoctorsSectionClient from "@/components/DoctorsSection/DoctorsSectionClient";
 
-export const dynamic = 'force-dynamic'
-
-export default async function Home() {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/doctors`)
-    const doctors = res.ok ? await res.json() : []
-
+export default function Home() {
     return (
         <main>
             <HomeAnimations />
@@ -19,7 +14,7 @@ export default async function Home() {
             <AboutSection />
             <ServicesSection />
             <SupportGroupsSection />
-            <DoctorsSection doctors={doctors} />
+            {/* <DoctorsSectionClient /> */}
             <ContactCardFooter />
         </main>
     );

@@ -7,7 +7,7 @@ import SchedulingIcon from '@/components/Icons/SchedulingIcon'
 import PrivacyIcon from '@/components/Icons/PrivacyIcon'
 import CheckIcon from '@/components/Icons/CheckIcon'
 import './about.css'
-import DoctorsSection from '@/components/DoctorsSection/DoctorsSection'
+import DoctorsSectionClient from '@/components/DoctorsSection/DoctorsSectionClient'
 import Link from 'next/link'
 import AboutAnimations from './AboutAnimations'
 
@@ -41,11 +41,7 @@ const reasons = [
     },
 ]
 
-export const dynamic = 'force-dynamic'
-
-const About = async () => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/doctors`)
-    const doctors = res.ok ? await res.json() : []
+const About = () => {
     return (
         <main>
             <AboutAnimations />
@@ -181,7 +177,7 @@ const About = async () => {
             </section>
 
             {/* ── Team ── */}
-            <DoctorsSection doctors={doctors} />
+            <DoctorsSectionClient />
 
             {/* ── Why MedPrestige ── */}
             <section className="about-reasons">
