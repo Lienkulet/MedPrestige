@@ -4,7 +4,8 @@ import "./globals.css";
 import 'react-datepicker/dist/react-datepicker.css';
 import ThemeConext from '@/components/providers/ThemeContext'
 import ToasterProvider from '@/components/providers/ToasterProvider'
-import ScrollToTop from '@/components/ScrollToTop';
+import ScrollToTop from '@/components/ScrollToTop'
+import { AuthProvider } from '@/contexts/AuthContext';
 
 export const metadata = {
   title: "MedPrestige - Advanced Healthcare Made Personal",
@@ -24,11 +25,13 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
-        <ThemeConext>
-          <ScrollToTop />
-          {children}
-          <ToasterProvider />
-        </ThemeConext>
+        <AuthProvider>
+          <ThemeConext>
+            <ScrollToTop />
+            {children}
+            <ToasterProvider />
+          </ThemeConext>
+        </AuthProvider>
         <Analytics />
         <SpeedInsights />
       </body>
