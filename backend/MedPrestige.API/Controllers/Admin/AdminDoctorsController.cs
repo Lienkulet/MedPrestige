@@ -53,4 +53,5 @@ namespace MedPrestige.Api.Controllers.Admin
             return Ok(new { message = "Doctor șters." });
         }
     }
+    
 }
