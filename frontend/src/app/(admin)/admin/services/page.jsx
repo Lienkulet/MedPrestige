@@ -2,76 +2,52 @@
 
 import { useEffect, useState } from "react";
 import "./services.css";
-import Modal from "@/components/admin/Modal";
-import { useToast } from "@/components/admin/ToastProvider";
-import { api } from "@/lib/api";
+import Modal                       from "@/components/admin/Modal";
+import { useToast }                from "@/components/admin/ToastProvider";
+import { useServices }             from "@/features/services/hooks/useServices";
+import { useDoctors }              from "@/features/doctors/hooks/useDoctors";
+import { medicalServicesService }  from "@/features/services/services/medicalServicesService";
+import ServiceForm                 from "@/features/services/components/ServiceForm";
 
 export default function AdminServicesPage() {
   const { pushToast } = useToast();
-  const [services, setServices] = useState([]);
-  const [doctors, setDoctors] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [open, setOpen] = useState(false);
+
+  const { services, loading, reload: reloadServices } = useServices(pushToast);
+  const { doctors,  reload: reloadDoctors }           = useDoctors();
+
+  const [open, setOpen]     = useState(false);
   const [editing, setEditing] = useState(null);
-  const [saving, setSaving] = useState(false);
+  const [saving, setSaving]   = useState(false);
 
   useEffect(() => {
-    Promise.all([loadServices(), loadDoctors()]);
+    Promise.all([reloadServices(), reloadDoctors()]);
   }, []);
 
-  async function loadServices() {
-    try {
-      setLoading(true);
-      const data = await api.get("/api/admin/services");
-      setServices(data);
-    } catch {
-      pushToast({ type: "error", title: "Failed to load services" });
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  async function loadDoctors() {
-    try {
-      const data = await api.get("/api/admin/doctors");
-      setDoctors(data);
-    } catch {
-      // silently fail — doctors list is only needed for the assign dropdown
-    }
-  }
-
-  function openCreate() {
-    setEditing(null);
-    setOpen(true);
-  }
-
-  function openEdit(s) {
-    setEditing(s);
-    setOpen(true);
-  }
+  function openCreate() { setEditing(null); setOpen(true); }
+  function openEdit(s)  { setEditing(s);    setOpen(true); }
 
   async function handleSave(e) {
     e.preventDefault();
     const fd = new FormData(e.target);
     const body = {
-      Name: fd.get("name"),
+      Name:        fd.get("name"),
       Description: fd.get("description"),
-      Duration: Number(fd.get("duration")),
-      Price: Number(fd.get("price")),
-      Status: fd.get("status"),
+      Duration:    Number(fd.get("duration")),
+      Price:       Number(fd.get("price")),
+      Status:      fd.get("status"),
     };
 
     setSaving(true);
     try {
       if (editing) {
-        await api.put(`/api/admin/services/${editing.ServiceId}`, body);
+        await medicalServicesService.update(editing.ServiceId, body);
         pushToast({ type: "success", title: "Service updated" });
       } else {
-        await api.post("/api/admin/services", body);
+        await medicalServicesService.create(body);
         pushToast({ type: "success", title: "Service created" });
       }
       setOpen(false);
-      await loadServices();
+      await reloadServices();
     } catch {
       pushToast({ type: "error", title: "Save failed" });
     } finally {
@@ -82,9 +58,9 @@ export default function AdminServicesPage() {
   async function handleDelete(s) {
     if (!confirm(`Delete "${s.Name}"? This cannot be undone.`)) return;
     try {
-      await api.del(`/api/admin/services/${s.ServiceId}`);
+      await medicalServicesService.remove(s.ServiceId);
       pushToast({ type: "success", title: "Service deleted" });
-      await loadServices();
+      await reloadServices();
     } catch {
       pushToast({ type: "error", title: "Delete failed" });
     }
@@ -107,15 +83,12 @@ export default function AdminServicesPage() {
           <table className="table">
             <thead>
               <tr>
-                <th>Service</th>
-                <th>Duration</th>
-                <th>Price</th>
-                <th>Status</th>
-                <th style={{ width: 200 }}>Actions</th>
+                <th>Service</th><th>Duration</th><th>Price</th>
+                <th>Status</th><th style={{ width: 200 }}>Actions</th>
               </tr>
             </thead>
             <tbody>
-              {services.map((s) => (
+              {services.map(s => (
                 <tr key={s.ServiceId}>
                   <td>{s.Name}</td>
                   <td>{s.Duration} min</td>
@@ -134,65 +107,19 @@ export default function AdminServicesPage() {
             </tbody>
           </table>
         )}
-
         {!loading && services.length === 0 && (
           <div className="empty">No services yet. Add one to get started.</div>
         )}
       </div>
 
-      <Modal
-        open={open}
-        title={editing ? "Edit Service" : "Add New Service"}
-        onClose={() => setOpen(false)}
-      >
-        <form key={editing?.ServiceId ?? "new"} className="form" onSubmit={handleSave}>
-          <div className="field">
-            <label>Service name *</label>
-            <input className="input" name="name" defaultValue={editing?.Name ?? ""} required />
-          </div>
-
-          <div className="field">
-            <label>Description</label>
-            <textarea className="textarea" name="description" defaultValue={editing?.Description ?? ""} />
-          </div>
-
-          <div className="grid2">
-            <div className="field">
-              <label>Duration (minutes) *</label>
-              <input className="input" name="duration" type="number" min="1" defaultValue={editing?.Duration ?? ""} required />
-            </div>
-            <div className="field">
-              <label>Price *</label>
-              <input className="input" name="price" type="number" min="0" defaultValue={editing?.Price ?? ""} required />
-            </div>
-          </div>
-
-          <div className="field">
-            <label>Status</label>
-            <select className="select" name="status" defaultValue={editing?.Status ?? "Active"}>
-              <option>Active</option>
-              <option>Inactive</option>
-            </select>
-          </div>
-
-          {doctors.length > 0 && (
-            <div className="field">
-              <label>Assign doctors</label>
-              <select className="select" multiple style={{ height: 140 }}>
-                {doctors.map((d) => (
-                  <option key={d.DoctorId} value={d.DoctorId}>{d.Name}</option>
-                ))}
-              </select>
-            </div>
-          )}
-
-          <div className="form__actions">
-            <button type="button" className="btn btn--ghost" onClick={() => setOpen(false)}>Cancel</button>
-            <button type="submit" className="btn btn--primary" disabled={saving}>
-              {saving ? "Saving..." : "Save"}
-            </button>
-          </div>
-        </form>
+      <Modal open={open} title={editing ? "Edit Service" : "Add New Service"} onClose={() => setOpen(false)}>
+        <ServiceForm
+          editing={editing}
+          doctors={doctors}
+          saving={saving}
+          onClose={() => setOpen(false)}
+          onSubmit={handleSave}
+        />
       </Modal>
     </div>
   );

@@ -1,0 +1,15 @@
+/* [project]/src/components/admin/admin-footer.css [app-client] (css) */
+.admin-footer {
+  color: #547593;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 28px;
+  font-size: 14px;
+  display: flex;
+}
+
+.admin-footer__muted {
+  opacity: .8;
+}
+
+/*# sourceMappingURL=src_components_admin_admin-footer_css_bad6b30c._.single.css.map*/

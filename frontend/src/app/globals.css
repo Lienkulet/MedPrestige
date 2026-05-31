@@ -1,10 +1,6 @@
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
 
 :root {
   --primary: #4A7BF7;
@@ -33,6 +29,14 @@
   --shadow-hover: 0 12px 40px rgba(74, 123, 247, 0.16);
   --transition: 0.3s ease;
   --max-width: 1280px;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #102D47;
+  --sidebar-primary: #4A7BF7;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e8eeff;
+  --sidebar-accent-foreground: #4A7BF7;
+  --sidebar-border: #E1F1F6;
+  --sidebar-ring: #4A7BF7;
 }
 
 html {
@@ -79,6 +83,11 @@ img {
   --accent-secondary: #2a5fb8;
   --shadow-card: 0 4px 24px rgba(8, 12, 24, 0.45);
   --shadow-hover: 0 12px 40px rgba(8, 12, 24, 0.6);
+}
+
+/* ── admin shell background ─────────────────────────────────── */
+[data-slot="sidebar-inset"] {
+  background: #F6FBFF;
 }
 
 /* ── react-datepicker theme ─────────────────────────────────── */
@@ -184,4 +193,48 @@ img {
 /* Hide default triangle arrow */
 .react-datepicker__triangle {
   display: none !important;
+}
+
+.dark {
+  --sidebar: #0f1525;
+  --sidebar-foreground: #e9efff;
+  --sidebar-primary: #4A7BF7;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #1f2d52;
+  --sidebar-accent-foreground: #93b4ff;
+  --sidebar-border: #2a3a62;
+  --sidebar-ring: #4A7BF7;
+}
+
+@theme inline {
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* shadcn base tokens — mapped to MedPrestige brand palette */
+  --color-background: #ffffff;
+  --color-foreground: #1a1a2e;
+  --color-card: #ffffff;
+  --color-card-foreground: #1a1a2e;
+  --color-popover: #ffffff;
+  --color-popover-foreground: #1a1a2e;
+  --color-primary: #4a7bf7;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #f4f7ff;
+  --color-secondary-foreground: #1a1a2e;
+  --color-muted: #f4f7ff;
+  --color-muted-foreground: #5a5a6e;
+  --color-accent: #e8eeff;
+  --color-accent-foreground: #1a1a2e;
+  --color-destructive: oklch(0.577 0.245 27.325);
+  --color-destructive-foreground: #ffffff;
+  --color-border: #e0eef8;
+  --color-input: #e0eef8;
+  --color-ring: #4a7bf7;
+  --radius: 0.625rem;
 }

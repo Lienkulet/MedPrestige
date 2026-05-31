@@ -1,0 +1,132 @@
+/* [project]/src/components/admin/admin-sidebar.css [app-client] (css) */
+.admin-sidebar {
+  flex-direction: column;
+  gap: 14px;
+  height: 100%;
+  padding: 14px;
+  display: flex;
+}
+
+.admin-sidebar__top {
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  display: flex;
+}
+
+.admin-sidebar__brand {
+  align-items: center;
+  gap: 12px;
+  display: flex;
+}
+
+.admin-sidebar__logo {
+  color: #fff;
+  background: #2f73f2;
+  border-radius: 12px;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  font-weight: 800;
+  display: grid;
+}
+
+.admin-sidebar__name {
+  color: #102d47;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.admin-sidebar__close {
+  cursor: pointer;
+  background: #fff;
+  border: 1px solid #e1f1f6;
+  border-radius: 10px;
+  width: 44px;
+  height: 40px;
+  display: none;
+}
+
+.admin-sidebar__nav {
+  gap: 8px;
+  margin-top: 6px;
+  display: grid;
+}
+
+.admin-sidebar__link {
+  color: #102d47;
+  border: 1px solid #0000;
+  border-radius: 12px;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  text-decoration: none;
+  display: flex;
+}
+
+.admin-sidebar__link:hover {
+  background: #effbff;
+  border-color: #e1f1f6;
+}
+
+.admin-sidebar__link.is-active {
+  color: #2f73f2;
+  background: #effbff;
+  border-color: #c0d5fb;
+  font-weight: 700;
+}
+
+.admin-sidebar__icon {
+  background: #f6fbff;
+  border: 1px solid #e1f1f6;
+  border-radius: 10px;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  display: grid;
+}
+
+.admin-sidebar.is-collapsed .admin-sidebar__link {
+  justify-content: center;
+}
+
+.admin-sidebar__hint {
+  background: #f6fbff;
+  border: 1px solid #e1f1f6;
+  border-radius: 14px;
+  margin-top: auto;
+  padding: 14px;
+}
+
+.admin-sidebar__hintTitle {
+  color: #102d47;
+  margin-bottom: 6px;
+  font-weight: 800;
+}
+
+.admin-sidebar__hintText {
+  color: #547593;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .admin-sidebar__close {
+    justify-content: center;
+    align-items: center;
+    display: inline-flex;
+  }
+
+  .admin-shell__sidebar {
+    background: #102d4726;
+  }
+
+  .admin-sidebar {
+    background: #fff;
+    border-right: 1px solid #e1f1f6;
+    width: 280px;
+    height: 100vh;
+  }
+}
+
+/*# sourceMappingURL=src_components_admin_admin-sidebar_css_bad6b30c._.single.css.map*/

@@ -6,17 +6,7 @@ import { usePathname } from "next/navigation";
 import LogoIcon from "../../Icons/LogoIcon";
 import "./Navbar.css";
 import { useTheme } from "@/components/providers/ThemeContext";
-
-function getAuthFromToken() {
-  try {
-    const token = localStorage.getItem("token");
-    if (!token) return null;
-    const payload = JSON.parse(atob(token.split(".")[1]));
-    return payload;
-  } catch {
-    return null;
-  }
-}
+import { getAuthPayload } from "@/utils/authUtils";
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -36,7 +26,7 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    setAuthUser(getAuthFromToken());
+    setAuthUser(getAuthPayload());
   }, [pathname]);
 
 
@@ -71,7 +61,7 @@ const Navbar = () => {
         <div className="navbar-actions">
           {authUser ? (
             <Link
-              href={authUser.role === "admin" ? "/admin" : authUser.role === "doctor" ? "/doctor/dashboard" : "/dashboard"}
+              href={"/admin"}
               className="navbar-login"
             >
               Dashboard
@@ -140,7 +130,7 @@ const Navbar = () => {
           <div className="navbar-mobile-actions">
             {authUser ? (
               <Link
-                href={authUser.role === "admin" ? "/admin" : authUser.role === "doctor" ? "/doctor/dashboard" : "/dashboard"}
+                href={"/admin"}
                 className="navbar-login mobile"
                 onClick={() => setMobileMenuOpen(false)}
               >

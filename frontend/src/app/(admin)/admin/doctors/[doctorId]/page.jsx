@@ -3,95 +3,81 @@
 import { useEffect, useMemo, useState } from "react";
 import { useParams } from "next/navigation";
 import "./doctor-detail.css";
-import Modal from "@/components/admin/Modal";
-import { useToast } from "@/components/admin/ToastProvider";
-import { api } from "@/lib/api";
-
-const STATUS_OPTIONS = ["Confirmed", "Completed", "Cancelled", "No-show"];
-
-function fmt(dt) {
-  if (!dt) return "—";
-  return new Date(dt).toLocaleString("ro-RO", {
-    day: "2-digit", month: "2-digit", year: "numeric",
-    hour: "2-digit", minute: "2-digit",
-  });
-}
+import Modal                       from "@/components/admin/Modal";
+import { useToast }                from "@/components/admin/ToastProvider";
+import { useDoctor }               from "@/features/doctors/hooks/useDoctors";
+import { useDoctorAppointments }   from "@/features/appointments/hooks/useAppointments";
+import { useServices }             from "@/features/services/hooks/useServices";
+import { doctorsService }          from "@/features/doctors/services/doctorsService";
+import { appointmentsService }     from "@/features/appointments/services/appointmentsService";
+import DoctorStats                 from "@/features/admin/components/DoctorStats";
+import { extractDate, extractTime, STATUS_OPTIONS } from "@/features/appointments/utils/appointmentUtils";
+import { fmtAdmin }                from "@/utils/dateUtils";
 
 export default function DoctorDetailPage() {
   const { doctorId } = useParams();
   const { pushToast } = useToast();
 
-  const [doctor, setDoctor] = useState(null);
-  const [appointments, setAppointments] = useState([]);
-  const [services, setServices] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const { doctor, loading, reload: reloadDoctor } = useDoctor(doctorId, pushToast);
+  const { appointments, reload: reloadAppointments } = useDoctorAppointments(doctorId, pushToast);
+  const { services, reload: reloadServices }         = useServices();
 
-  const [tab, setTab] = useState("basic");
-  const [openEdit, setOpenEdit] = useState(false);
-  const [openAppt, setOpenAppt] = useState(false);
+  const [tab, setTab]             = useState("basic");
+  const [openEdit, setOpenEdit]   = useState(false);
+  const [openAppt, setOpenAppt]   = useState(false);
   const [editingAppt, setEditingAppt] = useState(null);
   const [statusFilter, setStatusFilter] = useState("All");
-  const [saving, setSaving] = useState(false);
+  const [saving, setSaving]       = useState(false);
 
   useEffect(() => {
     if (!doctorId) return;
-    Promise.all([loadDoctor(), loadAppointments(), loadServices()]);
+    Promise.all([reloadDoctor(), reloadAppointments(), reloadServices()]);
   }, [doctorId]);
 
-  async function loadDoctor() {
-    try {
-      setLoading(true);
-      const data = await api.get(`/api/admin/doctors/${doctorId}`);
-      setDoctor(data);
-    } catch {
-      pushToast({ type: "error", title: "Failed to load doctor" });
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  async function loadAppointments() {
-    try {
-      const data = await api.get(`/api/admin/appointments/doctor/${doctorId}`);
-      setAppointments(data);
-    } catch {
-      pushToast({ type: "error", title: "Failed to load appointments" });
-    }
-  }
-
-  async function loadServices() {
-    try {
-      const data = await api.get("/api/admin/services");
-      setServices(data);
-    } catch {}
-  }
-
-  const filtered = useMemo(() => {
-    return appointments.filter((a) => statusFilter === "All" ? true : a.Status === statusFilter);
-  }, [appointments, statusFilter]);
+  const filtered = useMemo(() =>
+    appointments.filter(a => statusFilter === "All" || a.Status === statusFilter),
+    [appointments, statusFilter]
+  );
 
   const initials = doctor
-    ? (doctor.Name ?? "").split(" ").map((w) => w[0]).slice(0, 2).join("")
+    ? (doctor.Name ?? "").split(" ").map(w => w[0]).slice(0, 2).join("")
     : "?";
 
+  // ── Derived appointment stats ──────────────────────────────────────
+  const now = new Date();
+  const totalAppts = appointments.length;
+  const completedThisMonth = appointments.filter(a => {
+    if (a.Status !== "Completed") return false;
+    const d = new Date(a.StartAt);
+    return d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear();
+  }).length;
+  const upcomingThisWeek = appointments.filter(a => {
+    if (a.Status !== "Confirmed") return false;
+    const d = new Date(a.StartAt);
+    const weekEnd = new Date(now);
+    weekEnd.setDate(now.getDate() + 7);
+    return d >= now && d <= weekEnd;
+  }).length;
+
+  // ── Handlers ──────────────────────────────────────────────────────
   async function handleSaveDoctor(e) {
     e.preventDefault();
     const fd = new FormData(e.target);
     const body = {
-      Name: fd.get("name"),
+      Name:       fd.get("name"),
       Occupation: fd.get("specialty"),
-      Email: fd.get("email"),
-      Phone: fd.get("phone"),
-      Bio: fd.get("bio"),
-      Status: doctor?.Status ?? "Active",
-      Details: [],
+      Email:      fd.get("email"),
+      Phone:      fd.get("phone"),
+      Bio:        fd.get("bio"),
+      Status:     doctor?.Status ?? "Active",
+      Details:    [],
     };
     setSaving(true);
     try {
-      await api.put(`/api/admin/doctors/${doctorId}`, body);
+      await doctorsService.update(doctorId, body);
       pushToast({ type: "success", title: "Doctor updated" });
       setOpenEdit(false);
-      await loadDoctor();
+      await reloadDoctor();
     } catch {
       pushToast({ type: "error", title: "Save failed" });
     } finally {
@@ -99,46 +85,38 @@ export default function DoctorDetailPage() {
     }
   }
 
-  function openCreateAppt() {
-    setEditingAppt(null);
-    setOpenAppt(true);
-  }
-
-  function openEditAppt(a) {
-    setEditingAppt(a);
-    setOpenAppt(true);
-  }
+  function openCreateAppt() { setEditingAppt(null); setOpenAppt(true); }
+  function openEditAppt(a)  { setEditingAppt(a);    setOpenAppt(true); }
 
   async function handleSaveAppt(e) {
     e.preventDefault();
-    const fd = new FormData(e.target);
-    const date = fd.get("date");
-    const time = fd.get("time");
-    const startAt = date && time ? new Date(`${date}T${time}`).toISOString() : null;
+    const fd        = new FormData(e.target);
+    const date      = fd.get("date");
+    const time      = fd.get("time");
+    const startAt   = date && time ? new Date(`${date}T${time}`).toISOString() : null;
     const serviceId = Number(fd.get("serviceId")) || null;
-    const selectedService = services.find((s) => s.ServiceId === serviceId);
 
     const body = {
-      DoctorId: Number(doctorId),
-      DoctorName: doctor?.Name ?? "",
-      ServiceId: serviceId,
-      ServiceName: selectedService?.Name ?? "",
+      DoctorId:    Number(doctorId),
+      DoctorName:  doctor?.Name ?? "",
+      ServiceId:   serviceId,
+      ServiceName: services.find(s => s.ServiceId === serviceId)?.Name ?? "",
       PatientName: fd.get("patientName"),
-      Status: fd.get("status"),
-      StartAt: startAt,
+      Status:      fd.get("status"),
+      StartAt:     startAt,
     };
 
     setSaving(true);
     try {
       if (editingAppt) {
-        await api.put(`/api/admin/appointments/${editingAppt.AppointmentId}`, body);
+        await appointmentsService.update(editingAppt.AppointmentId, body);
         pushToast({ type: "success", title: "Appointment updated" });
       } else {
-        await api.post("/api/admin/appointments", body);
+        await appointmentsService.create(body);
         pushToast({ type: "success", title: "Appointment created" });
       }
       setOpenAppt(false);
-      await loadAppointments();
+      await reloadAppointments();
     } catch {
       pushToast({ type: "error", title: "Save failed" });
     } finally {
@@ -148,48 +126,29 @@ export default function DoctorDetailPage() {
 
   async function handleCompleteAppt(a) {
     try {
-      await api.put(`/api/admin/appointments/${a.AppointmentId}`, { ...a, Status: "Completed" });
+      await appointmentsService.updateStatus(a, "Completed");
       pushToast({ type: "success", title: "Marked as completed" });
-      await loadAppointments();
-    } catch {
-      pushToast({ type: "error", title: "Action failed" });
-    }
+      await reloadAppointments();
+    } catch { pushToast({ type: "error", title: "Action failed" }); }
   }
 
   async function handleCancelAppt(a) {
     try {
-      await api.put(`/api/admin/appointments/${a.AppointmentId}`, { ...a, Status: "Cancelled" });
+      await appointmentsService.updateStatus(a, "Cancelled");
       pushToast({ type: "success", title: "Appointment cancelled" });
-      await loadAppointments();
-    } catch {
-      pushToast({ type: "error", title: "Action failed" });
-    }
+      await reloadAppointments();
+    } catch { pushToast({ type: "error", title: "Action failed" }); }
   }
 
   if (loading) return <div className="doc"><div className="empty">Loading...</div></div>;
   if (!doctor) return <div className="doc"><div className="empty">Doctor not found.</div></div>;
 
-  const editApptDate = editingAppt?.StartAt ? editingAppt.StartAt.slice(0, 10) : "";
-  const editApptTime = editingAppt?.StartAt ? editingAppt.StartAt.slice(11, 16) : "";
-
-  const totalAppts = appointments.length;
-  const completedThisMonth = appointments.filter((a) => {
-    if (a.Status !== "Completed") return false;
-    const d = new Date(a.StartAt);
-    const now = new Date();
-    return d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear();
-  }).length;
-  const upcomingThisWeek = appointments.filter((a) => {
-    if (a.Status !== "Confirmed") return false;
-    const d = new Date(a.StartAt);
-    const now = new Date();
-    const weekEnd = new Date(now);
-    weekEnd.setDate(now.getDate() + 7);
-    return d >= now && d <= weekEnd;
-  }).length;
+  const editApptDate = extractDate(editingAppt?.StartAt);
+  const editApptTime = extractTime(editingAppt?.StartAt);
 
   return (
     <div className="doc">
+      {/* Header */}
       <div className="doc__top">
         <div className="doc__profile">
           <div className="doc__avatar" aria-hidden="true">{initials}</div>
@@ -208,30 +167,20 @@ export default function DoctorDetailPage() {
         </div>
       </div>
 
-      <div className="doc__stats">
-        <div className="stat">
-          <div className="stat__label">Total appointments</div>
-          <div className="stat__value">{totalAppts}</div>
-        </div>
-        <div className="stat">
-          <div className="stat__label">Upcoming this week</div>
-          <div className="stat__value">{upcomingThisWeek}</div>
-        </div>
-        <div className="stat">
-          <div className="stat__label">Completed this month</div>
-          <div className="stat__value">{completedThisMonth}</div>
-        </div>
-      </div>
+      {/* Stats */}
+      <DoctorStats
+        totalAppts={totalAppts}
+        upcomingThisWeek={upcomingThisWeek}
+        completedThisMonth={completedThisMonth}
+      />
 
+      {/* Tabs */}
       <div className="tabs">
-        <button className={`tab ${tab === "basic" ? "is-active" : ""}`} onClick={() => setTab("basic")}>
-          Basic Information
-        </button>
-        <button className={`tab ${tab === "appts" ? "is-active" : ""}`} onClick={() => setTab("appts")}>
-          Client Appointments
-        </button>
+        <button className={`tab ${tab === "basic" ? "is-active" : ""}`} onClick={() => setTab("basic")}>Basic Information</button>
+        <button className={`tab ${tab === "appts" ? "is-active" : ""}`} onClick={() => setTab("appts")}>Client Appointments</button>
       </div>
 
+      {/* Basic info tab */}
       {tab === "basic" && (
         <section className="card">
           <div className="card__title">Doctor profile</div>
@@ -245,14 +194,15 @@ export default function DoctorDetailPage() {
         </section>
       )}
 
+      {/* Appointments tab */}
       {tab === "appts" && (
         <section className="card">
           <div className="card__headRow">
             <div className="card__title">Appointments for this doctor</div>
             <div className="row">
-              <select className="select" value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
+              <select className="select" value={statusFilter} onChange={e => setStatusFilter(e.target.value)}>
                 <option>All</option>
-                {STATUS_OPTIONS.map((s) => <option key={s}>{s}</option>)}
+                {STATUS_OPTIONS.map(s => <option key={s}>{s}</option>)}
               </select>
               <button className="btn btn--primary" onClick={openCreateAppt}>Add appointment</button>
             </div>
@@ -262,23 +212,20 @@ export default function DoctorDetailPage() {
             <table className="table">
               <thead>
                 <tr>
-                  <th>Date & Time</th>
-                  <th>Client</th>
-                  <th>Service</th>
-                  <th>Status</th>
-                  <th style={{ width: 240 }}>Actions</th>
+                  <th>Date &amp; Time</th><th>Client</th><th>Service</th>
+                  <th>Status</th><th style={{ width: 240 }}>Actions</th>
                 </tr>
               </thead>
               <tbody>
-                {filtered.map((a) => (
+                {filtered.map(a => (
                   <tr key={a.AppointmentId}>
-                    <td>{fmt(a.StartAt)}</td>
+                    <td>{fmtAdmin(a.StartAt)}</td>
                     <td>{a.PatientName}</td>
                     <td>{a.ServiceName}</td>
                     <td>
-                      <span className={`pill ${
-                        a.Status === "Confirmed" || a.Status === "Completed" ? "pill--ok" : "pill--muted"
-                      }`}>{a.Status}</span>
+                      <span className={`pill ${a.Status === "Confirmed" || a.Status === "Completed" ? "pill--ok" : "pill--muted"}`}>
+                        {a.Status}
+                      </span>
                     </td>
                     <td className="actions">
                       <button className="btn btn--ghost" onClick={() => openEditAppt(a)}>Edit</button>
@@ -289,13 +236,12 @@ export default function DoctorDetailPage() {
                 ))}
               </tbody>
             </table>
-            {filtered.length === 0 && (
-              <div className="empty">No appointments found.</div>
-            )}
+            {filtered.length === 0 && <div className="empty">No appointments found.</div>}
           </div>
         </section>
       )}
 
+      {/* Edit doctor modal */}
       <Modal open={openEdit} title="Edit Doctor" onClose={() => setOpenEdit(false)}>
         <form key={doctor.DoctorId} className="form" onSubmit={handleSaveDoctor}>
           <div className="grid2">
@@ -324,13 +270,12 @@ export default function DoctorDetailPage() {
           </div>
           <div className="form__actions">
             <button type="button" className="btn btn--ghost" onClick={() => setOpenEdit(false)}>Cancel</button>
-            <button type="submit" className="btn btn--primary" disabled={saving}>
-              {saving ? "Saving..." : "Save"}
-            </button>
+            <button type="submit" className="btn btn--primary" disabled={saving}>{saving ? "Saving..." : "Save"}</button>
           </div>
         </form>
       </Modal>
 
+      {/* Add/edit appointment modal */}
       <Modal open={openAppt} title={editingAppt ? "Edit Appointment" : "Add Appointment"} onClose={() => setOpenAppt(false)}>
         <form key={editingAppt?.AppointmentId ?? "new-appt"} className="form" onSubmit={handleSaveAppt}>
           <div className="field">
@@ -346,9 +291,7 @@ export default function DoctorDetailPage() {
               <label>Service *</label>
               <select className="select" name="serviceId" required defaultValue={editingAppt?.ServiceId ?? ""}>
                 <option value="" disabled>Choose service</option>
-                {services.map((s) => (
-                  <option key={s.ServiceId} value={s.ServiceId}>{s.Name}</option>
-                ))}
+                {services.map(s => <option key={s.ServiceId} value={s.ServiceId}>{s.Name}</option>)}
               </select>
             </div>
           </div>
@@ -365,14 +308,12 @@ export default function DoctorDetailPage() {
           <div className="field">
             <label>Status</label>
             <select className="select" name="status" defaultValue={editingAppt?.Status ?? "Confirmed"}>
-              {STATUS_OPTIONS.map((s) => <option key={s}>{s}</option>)}
+              {STATUS_OPTIONS.map(s => <option key={s}>{s}</option>)}
             </select>
           </div>
           <div className="form__actions">
             <button type="button" className="btn btn--ghost" onClick={() => setOpenAppt(false)}>Cancel</button>
-            <button type="submit" className="btn btn--primary" disabled={saving}>
-              {saving ? "Saving..." : "Save"}
-            </button>
+            <button type="submit" className="btn btn--primary" disabled={saving}>{saving ? "Saving..." : "Save"}</button>
           </div>
         </form>
       </Modal>

@@ -1,0 +1,131 @@
+/* [project]/src/components/DoctorsCard/DoctorCard.css [app-client] (css) */
+.doctor-card {
+  background: var(--bg-white);
+  border: 1px solid var(--line-soft);
+  border-radius: 16px;
+  flex-direction: column;
+  transition: transform .28s, box-shadow .28s, border-color .28s;
+  display: flex;
+  overflow: hidden;
+  box-shadow: 0 2px 12px #0000000a;
+}
+
+.doctor-card:hover {
+  border-color: color-mix(in srgb, var(--primary) 25%, transparent);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px #4a7bf71f;
+}
+
+.doctor-card__img-link {
+  display: block;
+}
+
+.doctor-card__figure {
+  aspect-ratio: 4 / 5;
+  position: relative;
+  overflow: hidden;
+}
+
+.doctor-card__img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  transition: transform .5s;
+  display: block;
+}
+
+.doctor-card:hover .doctor-card__img {
+  transform: scale(1.06);
+}
+
+.doctor-card__overlay {
+  opacity: 0;
+  background: linear-gradient(to top, #4a7bf7bf 0%, #0000 60%);
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 20px;
+  transition: opacity .3s;
+  display: flex;
+  position: absolute;
+  inset: 0;
+}
+
+.doctor-card:hover .doctor-card__overlay {
+  opacity: 1;
+}
+
+.doctor-card__view-btn {
+  color: #fff;
+  letter-spacing: .3px;
+  font-size: .85rem;
+  font-weight: 600;
+  transition: transform .3s;
+  transform: translateY(6px);
+}
+
+.doctor-card:hover .doctor-card__view-btn {
+  transform: translateY(0);
+}
+
+.doctor-card__body {
+  flex-direction: column;
+  flex: 1;
+  gap: 4px;
+  padding: 18px 20px 22px;
+  display: flex;
+}
+
+.doctor-card__name-link {
+  text-decoration: none;
+}
+
+.doctor-card__name {
+  color: var(--text-dark);
+  margin: 0;
+  font-size: .975rem;
+  font-weight: 700;
+  line-height: 1.3;
+  transition: color .2s;
+}
+
+.doctor-card__name-link:hover .doctor-card__name {
+  color: var(--primary);
+}
+
+.doctor-card__specialty {
+  color: var(--primary);
+  letter-spacing: .2px;
+  margin: 0;
+  font-size: .82rem;
+  font-weight: 600;
+}
+
+.doctor-card__socials {
+  gap: 7px;
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+}
+
+.doctor-card__social-btn {
+  background: var(--bg-light);
+  width: 30px;
+  height: 30px;
+  color: var(--text-body);
+  border: 1px solid var(--line-soft);
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  transition: background .2s, color .2s, border-color .2s, transform .2s;
+  display: flex;
+}
+
+.doctor-card__social-btn:hover {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+  transform: scale(1.12);
+}
+
+/*# sourceMappingURL=src_components_DoctorsCard_DoctorCard_css_bad6b30c._.single.css.map*/
