@@ -1,5 +1,5 @@
 .two-color {
-  background: var(--footer-bg);
+  background: var(--bg-light);
   padding: 100px 0;
 }
 
@@ -42,4 +42,9 @@
   .container {
     padding: 0 16px;
   }
+}
+
+/* Dark mode */
+:root[data-theme="dark"] .two-color {
+  background: var(--footer-bg);
 }
