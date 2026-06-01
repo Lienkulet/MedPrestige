@@ -1,9 +1,9 @@
 'use client'
 import { useState, useEffect } from 'react'
 import toast from 'react-hot-toast'
-import PagesHero from "@/components/PagesHero/PagesHero"
-import ContactCardFooter from "@/components/ContactCardFooter/ContactCardFooter"
-import DoctorsCard from "@/components/DoctorsCard/DoctorsCard"
+import PagesHero from "@/components/common/PagesHero/PagesHero"
+import ContactCardFooter from "@/components/common/ContactCardFooter/ContactCardFooter"
+import DoctorsCard from "@/components/common/DoctorsCard/DoctorsCard"
 import DoctorsAnimations from "./DoctorsAnimations"
 
 export default function MeetOurDoctors() {

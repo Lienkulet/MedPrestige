@@ -1,5 +1,5 @@
 import React from "react";
-import DoctorCard from "@/components/DoctorsCard/DoctorCard";
+import DoctorCard from "@/components/common/DoctorsCard/DoctorCard";
 import "./DoctorsCard.css";
 
 // const doctors = [

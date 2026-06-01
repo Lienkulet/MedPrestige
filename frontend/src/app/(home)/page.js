@@ -9,7 +9,7 @@ import StatsSection from "./sections/StatsSection";
 import TestimonialsSection from "./sections/TestimonialsSection";
 import CtaSection from "./sections/CtaSection";
 import FaqSection from "./sections/FaqSection";
-import ContactCardFooter from "@/components/ContactCardFooter/ContactCardFooter";
+import ContactCardFooter from "@/components/common/ContactCardFooter/ContactCardFooter";
 
 export default function Home() {
     return (

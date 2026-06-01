@@ -4,10 +4,10 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { AppBreadcrumbs } from "@/components/app-breadcrumbs";
-import { CustomSidebarTrigger } from "@/components/custom-sidebar-trigger";
-import { getNavLinks } from "@/components/app-shared";
-import { NavUser } from "@/components/nav-user";
+import { AppBreadcrumbs } from "@/components/admin/shell/app-breadcrumbs";
+import { CustomSidebarTrigger } from "@/components/admin/shell/custom-sidebar-trigger";
+import { getNavLinks } from "@/components/admin/shell/app-shared";
+import { NavUser } from "@/components/admin/shell/nav-user";
 import { BellIcon } from "lucide-react";
 
 export function AppHeader() {

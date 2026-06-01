@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { LogoIcon } from "@/components/logo";
+import { LogoIcon } from "@/components/admin/shell/logo";
 import {
   Sidebar,
   SidebarContent,
@@ -11,8 +11,8 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { NavGroup } from "@/components/nav-group";
-import { getNavGroups, getFooterNavLinks } from "@/components/app-shared";
+import { NavGroup } from "@/components/admin/shell/nav-group";
+import { getNavGroups, getFooterNavLinks } from "@/components/admin/shell/app-shared";
 import Link from "next/link";
 
 export function AppSidebar() {
