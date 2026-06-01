@@ -7,7 +7,7 @@ import "./faq-section.css";
 const faqs = [
   {
     q: "How do I book an appointment?",
-    a: "Click "Book Appointment", choose your specialty and preferred doctor, then pick from their real-time availability. You'll get instant confirmation by email and SMS — the whole process takes under two minutes.",
+    a: "Click 'Book Appointment', choose your specialty and preferred doctor, then pick from their real-time availability. You'll get instant confirmation by email and SMS — the whole process takes under two minutes.",
   },
   {
     q: "Do you accept my insurance?",
@@ -15,7 +15,7 @@ const faqs = [
   },
   {
     q: "Can I have a video consultation?",
-    a: "Yes. Many of our specialists offer secure video visits. Simply select the "Video" option when choosing a time slot, and you'll receive a private link to join from any device.",
+    a: "Yes. Many of our specialists offer secure video visits. Simply select the 'Video' option when choosing a time slot, and you'll receive a private link to join from any device.",
   },
   {
     q: "How quickly can I be seen?",
