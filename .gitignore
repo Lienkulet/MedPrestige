@@ -24,6 +24,7 @@ node_modules/
 /.pnp
 .pnp.js
 frontend/.next/
+.next/
 /out/
 /build
 npm-debug.log*
