@@ -2,8 +2,8 @@
 import { useState, useEffect } from 'react'
 import toast from 'react-hot-toast'
 import Link from 'next/link'
-import PagesHero from '../../../components/PagesHero/PagesHero'
-import ContactCardFooter from '@/components/ContactCardFooter/ContactCardFooter'
+import PagesHero from "@/components/common/PagesHero/PagesHero"
+import ContactCardFooter from '@/components/common/ContactCardFooter/ContactCardFooter'
 import ServicesListAnimations from './ServicesListAnimations'
 import './services.css'
 

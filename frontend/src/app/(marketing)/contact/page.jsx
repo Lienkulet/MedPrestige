@@ -2,7 +2,7 @@ import React from 'react'
 import "./Contact.css";
 import ContactAnimations from './ContactAnimations';
 import ContactConsultationCard from '@/features/contact/ContactConsultationCart/ContactConsultationCard';
-import PagesHero from '@/components/PagesHero/PagesHero';
+import PagesHero from '@/components/common/PagesHero/PagesHero';
 import InfoCard from '@/components/ui/InfoCard/InfoCard';
 import EmailIcon from '@/components/Icons/EmailIcon';
 import CareersIcon from '@/components/Icons/CareersIcon';

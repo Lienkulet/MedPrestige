@@ -13,11 +13,18 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useEffect, useState } from "react";
 import { UserIcon, LogOutIcon } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
 
 export function NavUser() {
   const { user, logout } = useAuth();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) {
+    return <span className="size-8 rounded-full bg-accent inline-block" />;
+  }
 
   const displayName = user?.Name || user?.Email || "Admin";
   const email = user?.Email || "";

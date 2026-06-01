@@ -1,7 +1,7 @@
 import React from 'react'
-import PagesHero from '../../../../components/PagesHero/PagesHero'
-import ContactCardFooter from '@/components/ContactCardFooter/ContactCardFooter'
-import DoctorCard from '@/components/DoctorsCard/DoctorCard'
+import PagesHero from "@/components/common/PagesHero/PagesHero"
+import ContactCardFooter from '@/components/common/ContactCardFooter/ContactCardFooter'
+import DoctorCard from '@/components/common/DoctorsCard/DoctorCard'
 import ServiceDetailAnimations from './ServiceDetailAnimations'
 import CheckIcon from '@/components/Icons/CheckIcon'
 import '../services.css'

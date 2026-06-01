@@ -1,13 +1,13 @@
 import React from 'react'
-import PagesHero from '../../../components/PagesHero/PagesHero'
-import ContactCardFooter from '@/components/ContactCardFooter/ContactCardFooter'
+import PagesHero from "@/components/common/PagesHero/PagesHero"
+import ContactCardFooter from '@/components/common/ContactCardFooter/ContactCardFooter'
 import EquipmentIcon from '@/components/Icons/EquipmentIcon'
 import SpecialistIcon from '@/components/Icons/SpecialistIcon'
 import SchedulingIcon from '@/components/Icons/SchedulingIcon'
 import PrivacyIcon from '@/components/Icons/PrivacyIcon'
 import CheckIcon from '@/components/Icons/CheckIcon'
 import './about.css'
-import DoctorsSectionClient from '@/components/DoctorsSection/DoctorsSectionClient'
+import DoctorsSectionClient from '@/components/common/DoctorsSection/DoctorsSectionClient'
 import Link from 'next/link'
 import AboutAnimations from './AboutAnimations'
 

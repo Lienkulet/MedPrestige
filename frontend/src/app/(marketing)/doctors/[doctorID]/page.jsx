@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import PagesHero from "@/components/PagesHero/PagesHero";
-import ContactCardFooter from "@/components/ContactCardFooter/ContactCardFooter";
+import PagesHero from "@/components/common/PagesHero/PagesHero";
+import ContactCardFooter from "@/components/common/ContactCardFooter/ContactCardFooter";
 import "./doctor-profile.css";
 import DoctorProfileAnimations from "./DoctorProfileAnimations";
 import CheckIcon from "@/components/Icons/CheckIcon";
