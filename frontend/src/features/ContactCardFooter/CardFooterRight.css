@@ -3,8 +3,8 @@
   border-radius: 16px;
   padding: 48px;
   width: 100%;
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: var(--shadow-hover);
+  border: 1px solid var(--line-soft);
 }
 
 .contact-form {

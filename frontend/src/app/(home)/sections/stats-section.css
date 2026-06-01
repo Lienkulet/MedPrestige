@@ -1,0 +1,139 @@
+/* ===== STATS SECTION ===== */
+.stats-sec {
+  background: var(--bg-light);
+  padding: 60px 0;
+}
+
+.stats-sec__container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.stats-sec__band {
+  background: #102d47;
+  border-radius: 30px;
+  padding: 64px 60px;
+  overflow: hidden;
+  position: relative;
+}
+
+.stats-sec__band::before {
+  content: "";
+  position: absolute;
+  right: -80px;
+  top: -80px;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(74, 123, 247, 0.5), transparent 70%);
+  pointer-events: none;
+}
+
+.stats-sec__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  position: relative;
+}
+
+.stats-sec__cell {
+  position: relative;
+  padding-right: 24px;
+}
+
+.stats-sec__cell:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 6px;
+  bottom: 6px;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.stats-sec__n {
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 800;
+  line-height: 1;
+  background: linear-gradient(92deg, #fff, #bcd6ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.stats-sec__l {
+  margin-top: 12px;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.74);
+  line-height: 1.4;
+}
+
+/* Accreditation row */
+.stats-sec__accred {
+  margin-top: 48px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px 46px;
+  flex-wrap: wrap;
+}
+
+.stats-sec__accred-lbl {
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 6px;
+}
+
+.stats-sec__badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.stats-sec__badge-ic {
+  color: var(--accent-secondary);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .stats-sec__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 36px 24px;
+  }
+  .stats-sec__cell:nth-child(2)::after,
+  .stats-sec__cell:nth-child(4)::after {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .stats-sec__band {
+    padding: 44px 26px;
+    border-radius: 24px;
+  }
+  .stats-sec__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .stats-sec__cell::after {
+    display: none;
+  }
+  .stats-sec__badge {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 420px) {
+  .stats-sec__grid {
+    grid-template-columns: 1fr;
+  }
+}
