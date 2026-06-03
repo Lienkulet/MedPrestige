@@ -21,6 +21,9 @@ secrets.json
 # Node / Next.js (frontend)
 # ========================
 node_modules/
+frontend/node_modules/
+dist/
+frontend/dist/
 /.pnp
 .pnp.js
 frontend/.next/
