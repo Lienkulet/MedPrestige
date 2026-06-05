@@ -1,6 +1,6 @@
 import React from 'react'
 import PagesHero from "@/components/common/PagesHero/PagesHero"
-import ContactCardFooter from '@/components/common/ContactCardFooter/ContactCardFooter'
+import BookSection from '@/components/common/BookSection/BookSection'
 import DoctorCard from '@/components/common/DoctorsCard/DoctorCard'
 import ServiceDetailAnimations from './ServiceDetailAnimations'
 import CheckIcon from '@/components/Icons/CheckIcon'
@@ -17,7 +17,7 @@ const ServiceDetail = async ({ params }) => {
     return (
       <main>
         <PagesHero title="Service Not Found" subtitle="The service you are looking for does not exist." />
-        <ContactCardFooter />
+        <BookSection />
       </main>
     )
   }
@@ -106,7 +106,7 @@ const ServiceDetail = async ({ params }) => {
 
       </div>
 
-      <ContactCardFooter />
+      <BookSection />
     </main>
   )
 }

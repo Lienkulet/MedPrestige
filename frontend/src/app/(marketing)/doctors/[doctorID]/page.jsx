@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import PagesHero from "@/components/common/PagesHero/PagesHero";
-import ContactCardFooter from "@/components/common/ContactCardFooter/ContactCardFooter";
+import BookSection from "@/components/common/BookSection/BookSection";
 import "./doctor-profile.css";
 import DoctorProfileAnimations from "./DoctorProfileAnimations";
 import CheckIcon from "@/components/Icons/CheckIcon";
@@ -19,7 +19,7 @@ const DoctorProfilePage = async ({ params }) => {
         return (
             <main>
                 <PagesHero title="Doctor Not Found" subtitle="The doctor you are looking for does not exist." />
-                <ContactCardFooter />
+                <BookSection />
             </main>
         );
     }
@@ -176,7 +176,7 @@ const DoctorProfilePage = async ({ params }) => {
                 </div>
             </div>
 
-            <ContactCardFooter />
+            <BookSection />
         </main>
     );
 };

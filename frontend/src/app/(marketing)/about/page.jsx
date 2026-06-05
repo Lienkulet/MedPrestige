@@ -1,6 +1,6 @@
 import React from 'react'
 import PagesHero from "@/components/common/PagesHero/PagesHero"
-import ContactCardFooter from '@/components/common/ContactCardFooter/ContactCardFooter'
+import BookSection from '@/components/common/BookSection/BookSection'
 import EquipmentIcon from '@/components/Icons/EquipmentIcon'
 import SpecialistIcon from '@/components/Icons/SpecialistIcon'
 import SchedulingIcon from '@/components/Icons/SchedulingIcon'
@@ -203,7 +203,7 @@ const About = () => {
             </section>
 
             {/* ── Footer CTA ── */}
-            <ContactCardFooter />
+            <BookSection />
         </main>
     )
 }
