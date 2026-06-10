@@ -2,7 +2,7 @@ import ContactConsultationCard from '@/features/contact/ContactConsultationCart/
 import './BookSection.css';
 
 const BookSection = () => (
-  <section className="book-section">
+  <section className="book-section" id='bookSection'>
     <div className="book-container">
 
       {/* Left — clinic info */}

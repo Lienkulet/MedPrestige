@@ -102,7 +102,9 @@ export default function ServicesSection() {
           })}
         </div>
 
-        <button type="button" className="services-btn">View More</button>
+        <Link href="/services" type="button" className="services-btn">
+          View More
+        </Link>
       </div>
     </section>
   );
