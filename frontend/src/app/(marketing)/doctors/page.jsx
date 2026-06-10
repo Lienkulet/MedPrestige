@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 import toast from 'react-hot-toast'
 import PagesHero from "@/components/common/PagesHero/PagesHero"
-import ContactCardFooter from "@/components/common/ContactCardFooter/ContactCardFooter"
+import BookSection from "@/components/common/BookSection/BookSection"
 import DoctorsCard from "@/components/common/DoctorsCard/DoctorsCard"
 import DoctorsAnimations from "./DoctorsAnimations"
 
@@ -28,7 +28,7 @@ export default function MeetOurDoctors() {
                 subtitle="Board-certified specialists dedicated to delivering exceptional, compassionate care across every discipline."
             />
             <DoctorsCard doctors={doctors} />
-            <ContactCardFooter />
+            <BookSection />
         </main>
     )
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import PagesHero from "@/components/common/PagesHero/PagesHero";
-import ContactCardFooter from "@/components/common/ContactCardFooter/ContactCardFooter";
+import BookSection from "@/components/common/BookSection/BookSection";
 import "./doctor-profile.css";
 import DoctorProfileAnimations from "./DoctorProfileAnimations";
 import CheckIcon from "@/components/Icons/CheckIcon";
@@ -19,7 +19,7 @@ const DoctorProfilePage = async ({ params }) => {
         return (
             <main>
                 <PagesHero title="Doctor Not Found" subtitle="The doctor you are looking for does not exist." />
-                <ContactCardFooter />
+                <BookSection />
             </main>
         );
     }
@@ -27,16 +27,17 @@ const DoctorProfilePage = async ({ params }) => {
     const d = await res.json();
 
     const details = d.Details || [];
-    const skills       = details.filter(x => x.Type === "skill").map(x => x.Value);
+    const skills = details.filter(x => x.Type === "skill").map(x => x.Value);
     const certificates = details.filter(x => x.Type === "certificate").map(x => x.Value);
-    const awards       = details.filter(x => x.Type === "award").map(x => x.Value);
+    const awards = details.filter(x => x.Type === "award").map(x => x.Value);
 
     const profileFields = [
-        { label: "Specialty",    value: d.Occupation },
-        { label: "Experience",   value: d.Experience ? `${d.Experience} years` : "—" },
-        { label: "Location",     value: d.Location },
-        { label: "Phone",        value: d.Phone },
-        { label: "Email",        value: d.Email },
+        { label: "Name", value: d.Name.slice(4) },
+        { label: "Specialty", value: d.Occupation },
+        { label: "Experience", value: d.Experience ? `${d.Experience} years` : "—" },
+        { label: "Location", value: d.Location },
+        { label: "Phone", value: d.Phone },
+        { label: "Email", value: d.Email },
         ...(certificates.length ? [{ label: "Certificates", value: certificates.join(", ") }] : []),
     ];
 
@@ -98,8 +99,8 @@ const DoctorProfilePage = async ({ params }) => {
 
                             <ul className="doctor-sidebar__socials">
                                 {[
-                                    { label: "LinkedIn",    Icon: LinkedInIcon },
-                                    { label: "Facebook",    Icon: FacebookIcon },
+                                    { label: "LinkedIn", Icon: LinkedInIcon },
+                                    { label: "Facebook", Icon: FacebookIcon },
                                     { label: "Twitter / X", Icon: TwitterXIcon },
                                 ].map(({ label, Icon }) => (
                                     <li key={label}>
@@ -118,14 +119,6 @@ const DoctorProfilePage = async ({ params }) => {
 
                     {/* ── Content ── */}
                     <div className="doctor-content">
-
-                        {/* Biography */}
-                        <section className="doctor-section" aria-labelledby="bio-title">
-                            <span className="doctor-eyebrow">About</span>
-                            <h2 id="bio-title" className="doctor-section__title">Biography</h2>
-                            <p className="doctor-section__text">{d.Bio}</p>
-                        </section>
-
                         {/* Profile */}
                         <section className="doctor-section" aria-labelledby="profile-title">
                             <span className="doctor-eyebrow">Credentials</span>
@@ -139,6 +132,15 @@ const DoctorProfilePage = async ({ params }) => {
                                 ))}
                             </div>
                         </section>
+
+                        {/* Biography */}
+                        <section className="doctor-section" aria-labelledby="bio-title">
+                            <span className="doctor-eyebrow">About</span>
+                            <h2 id="bio-title" className="doctor-section__title">Biography</h2>
+                            <p className="doctor-section__text">{d.Bio}</p>
+                        </section>
+
+
 
                         {/* Awards */}
                         {awards.length > 0 && (
@@ -176,7 +178,7 @@ const DoctorProfilePage = async ({ params }) => {
                 </div>
             </div>
 
-            <ContactCardFooter />
+            <BookSection />
         </main>
     );
 };

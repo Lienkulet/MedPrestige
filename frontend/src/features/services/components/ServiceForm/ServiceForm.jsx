@@ -1,8 +1,23 @@
 import PropTypes from "prop-types";
+import { useState } from "react";
+import AdminSelect from "@/components/admin/AdminSelect/AdminSelect";
+import "./ServiceForm.css";
 
 export default function ServiceForm({ editing, doctors, saving, onClose, onSubmit }) {
+  const [selectedDoctorIds, setSelectedDoctorIds] = useState(editing?.DoctorIds ?? []);
+
+  function toggleDoctor(doctorId, checked) {
+    setSelectedDoctorIds(prev =>
+      checked ? prev.filter(id => id !== doctorId) : [...prev, doctorId]
+    );
+  }
+
+  function handleSubmit(e) {
+    onSubmit(e, selectedDoctorIds);
+  }
+
   return (
-    <form key={editing?.ServiceId ?? "new"} className="form" onSubmit={onSubmit}>
+    <form key={editing?.ServiceId ?? "new"} className="form" onSubmit={handleSubmit}>
       <div className="field">
         <label>Service name *</label>
         <input className="input" name="name" defaultValue={editing?.Name ?? ""} required />
@@ -25,21 +40,40 @@ export default function ServiceForm({ editing, doctors, saving, onClose, onSubmi
       </div>
 
       <div className="field">
+        <label>Photo URL</label>
+        <input className="input" name="image" type="url" placeholder="https://example.com/photo.jpg" defaultValue={editing?.Image ?? ""} />
+      </div>
+
+      <div className="field">
         <label>Status</label>
-        <select className="select" name="status" defaultValue={editing?.Status ?? "Active"}>
-          <option>Active</option>
-          <option>Inactive</option>
-        </select>
+        <AdminSelect
+          name="status"
+          options={["Active", "Inactive"]}
+          defaultValue={editing?.Status ?? "Active"}
+        />
       </div>
 
       {doctors.length > 0 && (
         <div className="field">
-          <label>Assign doctors</label>
-          <select className="select" multiple style={{ height: 140 }}>
-            {doctors.map(d => (
-              <option key={d.DoctorId} value={d.DoctorId}>{d.Name}</option>
-            ))}
-          </select>
+          <label>Assigned doctors</label>
+          <div className="doctor-list">
+            {doctors.map(d => {
+              const checked = selectedDoctorIds.includes(d.DoctorId);
+              return (
+                <label
+                  key={d.DoctorId}
+                  className={`doctor-item${checked ? " doctor-item--checked" : ""}`}
+                >
+                  <input
+                    type="checkbox"
+                    checked={checked}
+                    onChange={() => toggleDoctor(d.DoctorId, checked)}
+                  />
+                  <span>{d.Name}</span>
+                </label>
+              );
+            })}
+          </div>
         </div>
       )}
 

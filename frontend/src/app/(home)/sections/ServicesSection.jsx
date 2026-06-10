@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import "./services-section.css";
+import Link from "next/link";
 
 const icons = {
   cardiology: (
@@ -49,12 +50,12 @@ const icons = {
 };
 
 const services = [
-  { name: "Cardiology", key: "cardiology", description: "Personalized diagnostics and long-term cardiac monitoring programs." },
-  { name: "Radiology", key: "radiology", description: "High-resolution imaging with rapid interpretation and specialist follow-up." },
-  { name: "Gynecology", key: "gynecology", description: "Preventive and restorative care focused on every stage of women’s health." },
-  { name: "Sports Injury", key: "injury", description: "Rehabilitation pathways for safe recovery and performance return." },
-  { name: "Lung Diseases", key: "lung", description: "Respiratory screening, treatment planning, and ongoing condition management." },
-  { name: "Eye Care", key: "eye", description: "Comprehensive vision assessments with modern corrective solutions." },
+  { name: "Cardiology", key: "cardiology", id: 1, description: "Personalized diagnostics and long-term cardiac monitoring programs." },
+  { name: "Radiology", key: "radiology", id: 5, description: "High-resolution imaging with rapid interpretation and specialist follow-up." },
+  { name: "Gynecology", key: "gynecology", id: 3, description: "Preventive and restorative care focused on every stage of women’s health." },
+  { name: "Sports Injury", key: "injury", id: 6, description: "Rehabilitation pathways for safe recovery and performance return." },
+  { name: "Lung Diseases", key: "lung", id: 7, description: "Respiratory screening, treatment planning, and ongoing condition management." },
+  { name: "Eye Care", key: "eye", id: 8, description: "Comprehensive vision assessments with modern corrective solutions." },
 ];
 
 export default function ServicesSection() {
@@ -75,8 +76,8 @@ export default function ServicesSection() {
           {services.map((service, index) => {
             const active = activeIndex === index;
             return (
-              <article
-                key={service.name}
+              <Link href={`/services/${service.id}`}
+                key={service.key}
                 className={`service-card ${active ? "active" : ""}`}
                 onMouseEnter={() => setActiveIndex(index)}
                 onMouseLeave={() => setActiveIndex(-1)}
@@ -96,12 +97,14 @@ export default function ServicesSection() {
                     </svg>
                   </div>
                 </div>
-              </article>
+              </Link>
             );
           })}
         </div>
 
-        <button type="button" className="services-btn">View More</button>
+        <Link href="/services" type="button" className="services-btn">
+          View More
+        </Link>
       </div>
     </section>
   );

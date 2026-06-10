@@ -26,12 +26,6 @@ const HeroSection = () => {
             {/* Content */}
             <div className="hero-container">
                 <div className="hero-content">
-                    {/* Trust badge */}
-                    <div className="hero-badge">
-                        <span className="hero-badge-dot" />
-                        Trusted by 16,800+ patients worldwide
-                    </div>
-
                     <h1 className="hero-title">
                         Advanced Healthcare <br />
                         <span className="hero-title-accent">Made Personal</span>
@@ -87,8 +81,8 @@ const HeroSection = () => {
                 </div>
 
                 {/* Floating cards */}
-                <div className="hero-floats">
-                    {/* Rating card */}
+                {/* <div className="hero-floats">
+
                     <div className="hero-float-card hero-float-rating">
                         <div className="hero-float-icon">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -108,7 +102,7 @@ const HeroSection = () => {
                         </div>
                     </div>
 
-                    {/* Availability card */}
+
                     <div className="hero-float-card hero-float-avail">
                         <div className="hero-float-avail-dot" />
                         <div>
@@ -116,7 +110,7 @@ const HeroSection = () => {
                             <div className="hero-float-sub">Next slot: Today, 2:00 PM</div>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         </section>
     );

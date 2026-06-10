@@ -26,7 +26,7 @@ export default function AdminServicesPage() {
   function openCreate() { setEditing(null); setOpen(true); }
   function openEdit(s)  { setEditing(s);    setOpen(true); }
 
-  async function handleSave(e) {
+  async function handleSave(e, selectedDoctorIds = []) {
     e.preventDefault();
     const fd = new FormData(e.target);
     const body = {
@@ -34,7 +34,9 @@ export default function AdminServicesPage() {
       Description: fd.get("description"),
       Duration:    Number(fd.get("duration")),
       Price:       Number(fd.get("price")),
+      Image:       fd.get("image") || null,
       Status:      fd.get("status"),
+      DoctorIds:   selectedDoctorIds,
     };
 
     setSaving(true);

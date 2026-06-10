@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import toast from 'react-hot-toast'
 import Link from 'next/link'
 import PagesHero from "@/components/common/PagesHero/PagesHero"
-import ContactCardFooter from '@/components/common/ContactCardFooter/ContactCardFooter'
+import BookSection from '@/components/common/BookSection/BookSection'
 import ServicesListAnimations from './ServicesListAnimations'
 import './services.css'
 
@@ -146,7 +146,7 @@ export default function Services() {
         ))}
       </div>
 
-      <ContactCardFooter />
+      <BookSection />
     </main>
   )
 }

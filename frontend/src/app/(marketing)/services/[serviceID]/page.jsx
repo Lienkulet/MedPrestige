@@ -1,6 +1,6 @@
 import React from 'react'
 import PagesHero from "@/components/common/PagesHero/PagesHero"
-import ContactCardFooter from '@/components/common/ContactCardFooter/ContactCardFooter'
+import BookSection from '@/components/common/BookSection/BookSection'
 import DoctorCard from '@/components/common/DoctorsCard/DoctorCard'
 import ServiceDetailAnimations from './ServiceDetailAnimations'
 import CheckIcon from '@/components/Icons/CheckIcon'
@@ -17,7 +17,7 @@ const ServiceDetail = async ({ params }) => {
     return (
       <main>
         <PagesHero title="Service Not Found" subtitle="The service you are looking for does not exist." />
-        <ContactCardFooter />
+        <BookSection />
       </main>
     )
   }
@@ -57,10 +57,10 @@ const ServiceDetail = async ({ params }) => {
             <p className="service-detail-description">{service.extendedDescription}</p>
 
             <div className="service-highlights">
-              <div className="service-highlight-item">
+              {/* <div className="service-highlight-item">
                 <span className="service-highlight-value">{service.procedures.length}</span>
                 <span className="service-highlight-label">Procedures</span>
-              </div>
+              </div> */}
               <div className="service-highlight-item">
                 <span className="service-highlight-value">{service.doctors.length}</span>
                 <span className="service-highlight-label">Specialists</span>
@@ -78,7 +78,7 @@ const ServiceDetail = async ({ params }) => {
         </div>
 
         {/* ── Procedures ── */}
-        <div className="service-section">
+        {/* <div className="service-section">
           <span className="service-section-eyebrow">What we offer</span>
           <h2 className="service-section-heading">Procedures &amp; Treatments</h2>
           <div className="service-procedures-grid">
@@ -91,7 +91,7 @@ const ServiceDetail = async ({ params }) => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
 
         {/* ── Specialists ── */}
         <div className="service-section">
@@ -106,7 +106,7 @@ const ServiceDetail = async ({ params }) => {
 
       </div>
 
-      <ContactCardFooter />
+      <BookSection />
     </main>
   )
 }

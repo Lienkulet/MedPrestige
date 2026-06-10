@@ -7,9 +7,8 @@ import WhyUsSection from "./sections/WhyUsSection";
 import HowItWorksSection from "./sections/HowItWorksSection";
 import StatsSection from "./sections/StatsSection";
 import TestimonialsSection from "./sections/TestimonialsSection";
-import CtaSection from "./sections/CtaSection";
 import FaqSection from "./sections/FaqSection";
-import ContactCardFooter from "@/components/common/ContactCardFooter/ContactCardFooter";
+import BookSection from "@/components/common/BookSection/BookSection";
 
 export default function Home() {
     return (
@@ -23,9 +22,8 @@ export default function Home() {
             <StatsSection />
             <SupportGroupsSection />
             <TestimonialsSection />
-            <CtaSection />
             <FaqSection />
-            <ContactCardFooter />
+            <BookSection />
         </main>
     );
 }
