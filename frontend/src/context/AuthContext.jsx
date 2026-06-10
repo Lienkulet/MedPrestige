@@ -17,15 +17,15 @@ export function AuthProvider({ children }) {
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/me`, {
       headers: { Authorization: `Bearer ${token}` },
     })
-      .then((r) => (r.ok ? r.json() : null))
-      .then((data) => {
-        if (data) {
-          setUser(data);
-        } else {
+      .then((r) => {
+        if (r.ok) return r.json();
+        if (r.status === 401 || r.status === 403) {
           localStorage.removeItem("token");
           document.cookie = "token=; path=/; max-age=0";
         }
+        return null;
       })
+      .then((data) => { if (data) setUser(data); })
       .catch(() => {})
       .finally(() => setLoading(false));
   }, []);

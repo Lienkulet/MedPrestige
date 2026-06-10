@@ -1,5 +1,7 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
+import "./DoctorForm.css";
+import AdminSelect from "@/components/admin/AdminSelect/AdminSelect";
 
 export default function DoctorForm({ editing, services, saving, onClose, onSubmit }) {
   const [selectedServiceIds, setSelectedServiceIds] = useState(editing?.ServiceIds ?? []);
@@ -45,10 +47,11 @@ export default function DoctorForm({ editing, services, saving, onClose, onSubmi
         </div>
         <div className="field">
           <label>Status</label>
-          <select className="select" name="status" defaultValue={editing?.Status ?? "Active"}>
-            <option>Active</option>
-            <option>Inactive</option>
-          </select>
+          <AdminSelect
+            name="status"
+            options={["Active", "Inactive"]}
+            defaultValue={editing?.Status ?? "Active"}
+          />
         </div>
       </div>
 
@@ -60,17 +63,20 @@ export default function DoctorForm({ editing, services, saving, onClose, onSubmi
       {services.length > 0 && (
         <div className="field">
           <label>Assigned services</label>
-          <div style={{ display: "flex", flexDirection: "column", gap: 6, marginTop: 4 }}>
+          <div className="service-list">
             {services.map(s => {
               const checked = selectedServiceIds.includes(s.ServiceId);
               return (
-                <label key={s.ServiceId} style={{ display: "flex", alignItems: "center", gap: 8, cursor: "pointer", fontSize: 14 }}>
+                <label
+                  key={s.ServiceId}
+                  className={`service-item${checked ? " service-item--checked" : ""}`}
+                >
                   <input
                     type="checkbox"
                     checked={checked}
                     onChange={() => toggleService(s.ServiceId, checked)}
                   />
-                  {s.Name}
+                  <span>{s.Name}</span>
                 </label>
               );
             })}

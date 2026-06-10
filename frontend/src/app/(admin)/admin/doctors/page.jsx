@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import "./doctors.css";
 import Link from "next/link";
 import Modal                    from "@/components/admin/Modal";
+import AdminSelect              from "@/components/admin/AdminSelect/AdminSelect";
 import { useToast }             from "@/components/admin/ToastProvider";
 import { useDoctors }           from "@/features/doctors/hooks/useDoctors";
 import { useServices }          from "@/features/services/hooks/useServices";
@@ -103,11 +104,11 @@ export default function AdminDoctorsPage() {
           value={query}
           onChange={e => setQuery(e.target.value)}
         />
-        <select className="select" value={status} onChange={e => setStatus(e.target.value)}>
-          <option>All</option>
-          <option>Active</option>
-          <option>Inactive</option>
-        </select>
+        <AdminSelect
+          options={["All", "Active", "Inactive"]}
+          defaultValue={status}
+          onChange={setStatus}
+        />
       </div>
 
       <div className="tableCard">
