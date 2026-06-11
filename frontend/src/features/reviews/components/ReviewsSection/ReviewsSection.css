@@ -1,0 +1,44 @@
+.reviews-section {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.reviews-section__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.reviews-section__average {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+}
+
+.reviews-section__average-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: #F59E0B;
+}
+
+.reviews-section__average-label {
+    font-size: 15px;
+    color: var(--text-body, #547593);
+}
+
+.reviews-section__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.reviews-section__loading,
+.reviews-section__empty {
+    font-size: 15px;
+    color: var(--text-body, #547593);
+    padding: 24px 0;
+    text-align: center;
+}
