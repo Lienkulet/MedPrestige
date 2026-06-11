@@ -19,13 +19,21 @@ export function middleware(request) {
     return NextResponse.redirect(loginUrl);
   }
 
+  if (pathname.startsWith("/dashboard") && !token) {
+    const loginUrl = new URL("/login", request.url);
+    loginUrl.searchParams.set("from", pathname);
+    return NextResponse.redirect(loginUrl);
+  }
+
   if (pathname === "/login" && token) {
-    return NextResponse.redirect(new URL("/admin", request.url));
+    const role = getRole(token);
+    const dest = role === "patient" ? "/dashboard" : "/admin";
+    return NextResponse.redirect(new URL(dest, request.url));
   }
 
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/admin/:path*", "/login"],
+  matcher: ["/admin/:path*", "/dashboard/:path*", "/dashboard", "/login"],
 };

@@ -30,6 +30,8 @@ const Navbar = () => {
   }, [pathname]);
 
 
+  const dashboardHref = authUser?.role === "patient" ? "/dashboard" : "/admin";
+
   const navLinks = [
     { name: "Services", href: "/services" },
     { name: "Doctors", href: "/doctors" },
@@ -61,7 +63,7 @@ const Navbar = () => {
         <div className="navbar-actions">
           {authUser ? (
             <Link
-              href={"/admin"}
+              href={dashboardHref}
               className="navbar-login"
             >
               Dashboard
@@ -130,7 +132,7 @@ const Navbar = () => {
           <div className="navbar-mobile-actions">
             {authUser ? (
               <Link
-                href={"/admin"}
+                href={dashboardHref}
                 className="navbar-login mobile"
                 onClick={() => setMobileMenuOpen(false)}
               >
